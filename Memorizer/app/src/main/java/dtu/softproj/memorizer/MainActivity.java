@@ -9,45 +9,27 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageButton mSequenceButton;
-    private ImageButton mNumberMemoryButton;
-    private ImageButton mVisualMemoryButton;
+    private ImageButton mButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        // Sequence button
-        mSequenceButton = findViewById(R.id.sequence_button);
-        mSequenceButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent sequenceIntent = new Intent(MainActivity.this, SequenceActivity.class);
-                startActivity(sequenceIntent);
-            }
-        });
-
-        // Number memory button
-        mNumberMemoryButton = findViewById(R.id.numbermemory_button);
-        mNumberMemoryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent numberIntent = new Intent(MainActivity.this, NumberMemoryActivity.class);
-                startActivity(numberIntent);
-            }
-        });
-
-        // Visual memory button
-        mVisualMemoryButton = findViewById(R.id.visualmemory_button);
-        mVisualMemoryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent visualIntent = new Intent(MainActivity.this, VisualMemoryActivity.class);
-                startActivity(visualIntent);
-            }
-        });
+        openGameButton(R.id.sequence_button, SequenceActivity.class);
+        openGameButton(R.id.numbermemory_button, NumberMemoryActivity.class);
+        openGameButton(R.id.visualmemory_button, VisualMemoryActivity.class);
     }
 
+    public void openGameButton(int id, Class gameMenu) {
+    
+    mButton = findViewById(id);
+    mButton.setOnClickListener(new View.OnClickListener() {
+       @Override
+       public void onClick(View v) {
+         Intent intent = new Intent(MainActivity.this, gameMenu);
+         startActivity(intent);
+         }
+    });
+    }
 }
