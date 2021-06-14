@@ -22,7 +22,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openGameButton(int id, Class gameMenu) {
-    
+
+
+
     mButton = findViewById(id);
     mButton.setOnClickListener(new View.OnClickListener() {
        @Override

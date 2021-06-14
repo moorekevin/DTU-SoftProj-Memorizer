@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.view.View;
 import android.content.Intent;
 import android.widget.ImageView;
@@ -38,10 +37,11 @@ public class NumberMemoryActivity extends AppCompatActivity {
         mPlayButton.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                   Intent playIntent = new Intent(NumberMemoryActivity.this, NumberGame.class);
+                   Intent playIntent = new Intent(NumberMemoryActivity.this, NumberGameOver.class);
                    startActivity(playIntent);
             }
         });
     }
 
+    
 }

@@ -18,8 +18,15 @@
         </activity>
 
         <activity android:name=".NumberMemoryActivity"/>
-
-        <activity android:name=".NumberGame"/>
+        <activity android:name=".NumberGameOver"/>
+        
+        <activity android:name=".SequenceActivity"/>
+        <activity android:name=".SequenceGameOver"/>
+        
+        <activity android:name=".VisualMemoryActivity"/>
+        <activity android:name=".VisualGameOver"/>
+        
+        
 
 
     </application>
