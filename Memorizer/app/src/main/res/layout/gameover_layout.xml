@@ -11,11 +11,15 @@
         android:id="@+id/gameOverTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="55dp"
         android:layout_marginBottom="15dp"
-        android:text="Game Over"
-        android:textSize="20sp" />
+        android:fontFamily="@font/bauhs93"
+        android:text="Game \n Over"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="80sp" />
 
     <TextView
         android:id="@+id/yourScore"
@@ -24,9 +28,12 @@
         android:layout_below="@+id/gameOverTitle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="0dp"
+        android:fontFamily="@font/staatliches"
         android:text="Your Score:"
-        android:textSize="20sp" />
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/highscore"
@@ -36,8 +43,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
+        android:fontFamily="@font/staatliches"
         android:text="Highscore:"
-        android:textSize="20sp" />
+        android:textColor="#000000"
+        android:textSize="30sp" />
 
     <ImageButton
         android:id="@+id/homeButton"
@@ -49,25 +58,29 @@
 
     <Button
         android:id="@+id/statisticsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="230dp"
+        android:layout_height="78dp"
         android:layout_below="@+id/highscore"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="7.5dp"
         android:backgroundTint="@android:color/white"
+        android:fontFamily="@font/staatliches"
         android:text="STATISTICS"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        android:textSize="40sp" />
 
     <Button
         android:id="@+id/playAgainButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="230dp"
+        android:layout_height="78dp"
         android:layout_below="@+id/statisticsButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="7.5dp"
         android:layout_marginBottom="15dp"
         android:backgroundTint="@android:color/white"
+        android:fontFamily="@font/staatliches"
         android:text="PLAY AGAIN"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        android:textSize="40sp" />
 </RelativeLayout>

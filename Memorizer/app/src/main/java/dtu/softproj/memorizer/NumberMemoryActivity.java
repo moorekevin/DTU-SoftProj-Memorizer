@@ -32,7 +32,8 @@ public class NumberMemoryActivity extends AppCompatActivity {
         gameName.setText("Number Memory");
         // Setting the game description
         TextView gameDescription = (TextView) findViewById(R.id.gameDescription);
-        gameDescription.setText("This game is about memorizing sequences of numbers");
+        gameDescription.setText("Memorize the longest sequence of numbers. \n " +
+                "The average person can remember \n 7 numbers at once");
 
         mPlayButton.setOnClickListener(new View.OnClickListener() {
               @Override

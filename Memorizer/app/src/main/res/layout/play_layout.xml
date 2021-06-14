@@ -11,9 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:paddingTop="80dp" />
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="15dp"/>
 
     <TextView
         android:id="@+id/gameName"
@@ -23,8 +22,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
+        android:fontFamily="@font/staatliches"
+        android:letterSpacing="-0.03"
         android:text="Game Name"
-        android:textSize="24sp" />
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="64sp" />
 
     <TextView
         android:id="@+id/gameDescription"
@@ -34,8 +37,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
+        android:fontFamily="@font/staatliches"
         android:text="This text should describe the game."
-        android:textSize="16sp" />
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/gameHighScore"
@@ -45,19 +51,25 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
+        android:fontFamily="@font/staatliches"
         android:text="All Time Highscore: "
-        android:textSize="20sp" />
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="40sp" />
 
     <Button
         android:id="@+id/playbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="230dp"
+        android:layout_height="78dp"
         android:layout_below="@+id/gameHighScore"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:backgroundTint="@android:color/white"
+        android:fontFamily="@font/staatliches"
+        android:shadowColor="@color/black"
         android:text="PLAY"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        android:textSize="40sp" />
 
 </RelativeLayout>

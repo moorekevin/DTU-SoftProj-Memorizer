@@ -25,9 +25,6 @@
         
         <activity android:name=".VisualMemoryActivity"/>
         <activity android:name=".VisualGameOver"/>
-        
-        
-
 
     </application>
 
