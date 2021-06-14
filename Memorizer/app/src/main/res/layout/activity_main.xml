@@ -1,61 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background = "@drawable/gradient_drawable">
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/lobster"
-        android:text="Memorizer v1.0"
-        android:textColor="#AB00FF"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:background = "@drawable/gradient_drawable">
 
-    <ImageButton
-        android:id="@+id/sequence_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="13dp"
-        android:background="@drawable/sequence_icon"
-        android:src="@drawable/sequence_icon" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/lobster"
+            android:text="Memorizer v1.0"
+            android:textColor="#AB00FF"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/numbermemory_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sequence_button"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/numbermemory_icon"
-        android:src="@drawable/numbermemory_icon" />
+        <ImageButton
+            android:id="@+id/sequence_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/sequence_icon"
+            android:src="@drawable/sequence_icon" />
 
-    <ImageButton
-        android:id="@+id/visualmemory_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/numbermemory_button"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/visualmemory_icon"
-        android:src="@drawable/visualmemory_icon" />
+        <ImageButton
+            android:id="@+id/numbermemory_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sequence_button"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/numbermemory_icon"
+            android:src="@drawable/numbermemory_icon" />
 
-    <ImageButton
-        android:id="@+id/comingsoon_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/visualmemory_button"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/comingsoon_icon"
-        android:src="@drawable/comingsoon_icon" />
+        <ImageButton
+            android:id="@+id/visualmemory_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/numbermemory_button"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/visualmemory_icon"
+            android:src="@drawable/visualmemory_icon" />
 
-</RelativeLayout>
+        <ImageButton
+            android:id="@+id/comingsoon_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/visualmemory_button"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/comingsoon_icon"
+            android:src="@drawable/comingsoon_icon" />
+
+    </RelativeLayout>
+</ScrollView>

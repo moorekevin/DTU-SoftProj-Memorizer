@@ -1,75 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/playRelativeLayout"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:fillViewport="true">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/playRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="15dp"/>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="15dp"/>
 
-    <TextView
-        android:id="@+id/gameName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:fontFamily="@font/staatliches"
-        android:letterSpacing="-0.03"
-        android:text="Game Name"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="64sp" />
+        <TextView
+            android:id="@+id/gameName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/staatliches"
+            android:letterSpacing="-0.03"
+            android:text="Game Name"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="64sp" />
 
-    <TextView
-        android:id="@+id/gameDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/gameName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:fontFamily="@font/staatliches"
-        android:text="This text should describe the game."
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/gameDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gameName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/staatliches"
+            android:text="This text should describe the game."
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/gameHighScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/gameDescription"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:fontFamily="@font/staatliches"
-        android:text="All Time Highscore: "
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="40sp" />
+        <TextView
+            android:id="@+id/gameHighScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gameDescription"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/staatliches"
+            android:text="All Time Highscore: "
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="40sp" />
 
-    <Button
-        android:id="@+id/playbutton"
-        android:layout_width="230dp"
-        android:layout_height="78dp"
-        android:layout_below="@+id/gameHighScore"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:backgroundTint="@android:color/white"
-        android:fontFamily="@font/staatliches"
-        android:shadowColor="@color/black"
-        android:text="PLAY"
-        android:textColor="@android:color/black"
-        android:textSize="40sp" />
+        <Button
+            android:id="@+id/playbutton"
+            android:layout_width="230dp"
+            android:layout_height="78dp"
+            android:layout_below="@+id/gameHighScore"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:backgroundTint="@android:color/white"
+            android:fontFamily="@font/staatliches"
+            android:shadowColor="@color/black"
+            android:text="PLAY"
+            android:textColor="@android:color/black"
+            android:textSize="40sp" />
 
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
