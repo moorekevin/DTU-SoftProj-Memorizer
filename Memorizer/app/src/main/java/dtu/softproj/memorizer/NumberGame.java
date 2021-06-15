@@ -1,5 +1,7 @@
 package dtu.softproj.memorizer;
 
-public class NumberGame {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class NumberGame extends AppCompatActivity {
     
 }

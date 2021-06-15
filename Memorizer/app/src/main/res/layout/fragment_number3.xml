@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#88FF98"
+    tools:context=".NumberFragment3">
+
+    <ImageView
+        android:id="@+id/ivCheckMark"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="15dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/check_mark"
+        android:src="@drawable/check_mark" />
+
+
+    <TextView
+        android:id="@+id/tvAnsweredCorrectly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivCheckMark"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/staatliches"
+        android:text="You Answered Correctly"
+        android:shadowColor="@color/black"
+        android:textColor="@android:color/black"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/tvLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAnsweredCorrectly"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/staatliches"
+        android:shadowColor="@color/black"
+        android:text="Level: "
+        android:textColor="@android:color/black"
+        android:textSize="50sp" />
+
+    <Button
+        android:id="@+id/bNext"
+        android:layout_width="230dp"
+        android:layout_height="78dp"
+        android:layout_below="@+id/tvLevel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="@android:color/white"
+        android:fontFamily="@font/staatliches"
+        android:shadowColor="@color/black"
+        android:text="NEXT"
+        android:textColor="@android:color/black"
+        android:textSize="40sp" />
+
+</RelativeLayout>

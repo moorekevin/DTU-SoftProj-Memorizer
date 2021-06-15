@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#88FF98"
+    tools:context=".NumberFragment2">
+
+    <TextView
+        android:id="@+id/what_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/staatliches"
+        android:shadowColor="@color/black"
+        android:text="What was the number?"
+        android:textColor="@android:color/black"
+        android:textSize="40sp" />
+
+    <EditText
+        android:id="@+id/number_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/what_number"
+        android:layout_centerHorizontal="true"
+        android:inputType="number"
+        android:fontFamily="@font/staatliches"
+        android:shadowColor="@color/black"
+        android:textColor="@android:color/black"
+        android:textSize="45sp" />
+
+    <Button
+        android:id="@+id/number_submit"
+        android:layout_width="230dp"
+        android:layout_height="78dp"
+        android:layout_below="@+id/number_input"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="275dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="@android:color/white"
+        android:fontFamily="@font/staatliches"
+        android:shadowColor="@color/black"
+        android:text="SUBMIT"
+        android:textColor="@android:color/black"
+        android:textSize="40sp" />
+
+
+</RelativeLayout>
