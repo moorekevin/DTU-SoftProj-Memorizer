@@ -1,11 +1,16 @@
 package dtu.softproj.memorizer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.app.Fragment;
 
-import androidx.fragment.app.Fragment;
+import androidx.annotation.Nullable;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,18 +51,44 @@ public class NumberFragment2 extends Fragment {
     }
 
     @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Button submitButton = view.findViewById(R.id.number_submit);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText mEditText = (EditText) view.findViewById(R.id.number_input);
+                int result = 1;
+                String input = mEditText.getText().toString();
+                if (input.equals("" + result)) {
+                    getFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.flFragment, new NumberFragment3())
+                            .commit();
+                } else {
+                    getActivity().finish();
+                    Intent gameOverIntent = new Intent(getContext(), NumberGameOver.class);
+                    startActivity(gameOverIntent);
+                }
+            }
+        });
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_number1, container, false);
+        return inflater.inflate(R.layout.fragment_number2, container, false);
     }
 }

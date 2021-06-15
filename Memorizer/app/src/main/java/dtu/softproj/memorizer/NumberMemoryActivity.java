@@ -38,7 +38,7 @@ public class NumberMemoryActivity extends AppCompatActivity {
         mPlayButton.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                   Intent playIntent = new Intent(NumberMemoryActivity.this, NumberGameOver.class);
+                   Intent playIntent = new Intent(NumberMemoryActivity.this, NumberGame.class);
                    startActivity(playIntent);
             }
         });

@@ -2,13 +2,15 @@ package dtu.softproj.memorizer;
 
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
-
+import android.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.content.Context;
 
 public class NumberFragment1 extends Fragment {
 
@@ -23,6 +25,9 @@ public class NumberFragment1 extends Fragment {
     private ProgressBar mProgressBar;
     private CountDownTimer mCountDownTimer;
     private int progress = 0;
+    private int timerSeconds = 2;
+    private int number = 1;
+    private NumberGame numberGame;
 
     public NumberFragment1() {
         // Required empty public constructor
@@ -53,6 +58,8 @@ public class NumberFragment1 extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
@@ -63,27 +70,39 @@ public class NumberFragment1 extends Fragment {
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState) {
+
         super.onViewCreated(view, savedInstanceState);
+
+        numberGame = new NumberGame();
+        TextView textview = (TextView) view.findViewById(R.id.numberView);
+        textview.setText(numberGame.generateNumber());
+
+
         mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         mProgressBar.setProgress(progress);
-        
-        int amountOfSeconds = 5;
 
-        mCountDownTimer = new CountDownTimer(amountOfSeconds*1000, 1000) {
+        mCountDownTimer = new CountDownTimer(timerSeconds * 1000, 50) {
             @Override
             public void onTick(long millisUntilFinished) {
                 progress++;
-                mProgressBar.setProgress((int)progress*100/(amountOfSeconds));
+                mProgressBar.setProgress((int) progress * 5 / (timerSeconds));
             }
-            
+
             @Override
             public void onFinish() {
                 mProgressBar.setProgress(100);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.flFragment, new NumberFragment2())
+                        .commit();
             }
         };
         mCountDownTimer.start();
 
     }
+
+
 
 
 }

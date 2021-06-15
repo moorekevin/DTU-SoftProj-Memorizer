@@ -40,7 +40,9 @@ public class NumberGameOver extends AppCompatActivity {
         mPlayAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                finish();
+                Intent intent = new Intent(NumberGameOver.this, NumberGame.class);
+                startActivity(intent);
             }
         });
 

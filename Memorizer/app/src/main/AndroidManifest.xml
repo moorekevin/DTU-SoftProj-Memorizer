@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait">
+        android:screenOrientation="portrait"
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,18 +20,14 @@
 
         <activity android:name=".NumberMemoryActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".NumberGameOver"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".NumberGameOver"/>
         
-        <activity android:name=".SequenceActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".SequenceGameOver"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".SequenceActivity"/>
+        <activity android:name=".SequenceGameOver"/>
         
-        <activity android:name=".VisualMemoryActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".VisualGameOver"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".VisualMemoryActivity"/>
+        <activity android:name=".VisualGameOver"/>
+        <activity android:name=".NumberGame"/>
 
     </application>
 
