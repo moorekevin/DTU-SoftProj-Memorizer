@@ -68,11 +68,11 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="7.5dp"
-            android:backgroundTint="@android:color/white"
             android:fontFamily="@font/staatliches"
             android:text="STATISTICS"
             android:textColor="@android:color/black"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+            android:background="@drawable/rounded_button" />
 
         <Button
             android:id="@+id/playAgainButton"
@@ -82,11 +82,11 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="7.5dp"
             android:layout_marginBottom="15dp"
-            android:backgroundTint="@android:color/white"
             android:fontFamily="@font/staatliches"
             android:text="PLAY AGAIN"
             android:textColor="@android:color/black"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+            android:background="@drawable/rounded_button"/>
 
 
     </RelativeLayout>
