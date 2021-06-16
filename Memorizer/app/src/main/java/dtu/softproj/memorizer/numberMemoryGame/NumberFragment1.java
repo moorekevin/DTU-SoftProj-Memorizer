@@ -60,6 +60,7 @@ public class NumberFragment1 extends Fragment {
                 progress++;
                 mProgressBar.setProgress((int) progress * 5 / (timerSeconds));
             }
+            // TODO: Timer crashes the program if you go back or press the home button
 
             @Override
             public void onFinish() {
