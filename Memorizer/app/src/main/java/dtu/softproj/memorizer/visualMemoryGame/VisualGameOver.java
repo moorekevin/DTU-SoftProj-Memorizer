@@ -22,7 +22,15 @@ public class VisualGameOver extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gameover_layout);
-//        mPlayAgain = (Button) findViewById(R.id.playAgainButton);
+        mPlayAgain = (Button) findViewById(R.id.playAgainButton);
+        mPlayAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent playAgainIntent = new Intent(VisualGameOver.this, VisualMemoryGame.class);
+                startActivity(playAgainIntent);
+            }
+        });
+
 //        mStatistics = (Button) findViewById(R.id.statisticsButton);
         homeButton = (ImageButton) findViewById(R.id.homeButton);
 
