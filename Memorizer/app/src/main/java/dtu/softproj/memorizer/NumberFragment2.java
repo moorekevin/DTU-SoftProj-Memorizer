@@ -1,5 +1,6 @@
 package dtu.softproj.memorizer;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.app.Fragment;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -18,7 +20,6 @@ import androidx.annotation.Nullable;
  * create an instance of this fragment.
  */
 public class NumberFragment2 extends Fragment {
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -54,17 +55,29 @@ public class NumberFragment2 extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Button submitButton = view.findViewById(R.id.number_submit);
+
+
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText mEditText = (EditText) view.findViewById(R.id.number_input);
-                int result = 1;
                 String input = mEditText.getText().toString();
-                if (input.equals("" + result)) {
+                if (input.equals("") || input == null) {
+                    Context context = getActivity();
+                    Toast fillTextBox = Toast.makeText(context, "Please Insert a Number", Toast.LENGTH_SHORT);
+                    fillTextBox.show();
+                    return;
+                }
+
+                String numberString = getArguments().getString("numberString");
+                System.out.println("Passed numberString: " + numberString);
+                if (input.equals(numberString)) {
                     getFragmentManager()
                             .beginTransaction()
                             .replace(R.id.flFragment, new NumberFragment3())
                             .commit();
+
                 } else {
                     getActivity().finish();
                     Intent gameOverIntent = new Intent(getContext(), NumberGameOver.class);
@@ -72,6 +85,7 @@ public class NumberFragment2 extends Fragment {
                 }
             }
         });
+
     }
 
     @Override

@@ -3,7 +3,9 @@ package dtu.softproj.memorizer;
 import android.os.Bundle;
 
 import android.app.Fragment;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.content.Context;
+
+import java.util.Random;
 
 public class NumberFragment1 extends Fragment {
 
@@ -20,46 +24,17 @@ public class NumberFragment1 extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+//    private String mParam1;
+//    private String mParam2;
     private ProgressBar mProgressBar;
     private CountDownTimer mCountDownTimer;
     private int progress = 0;
-    private int timerSeconds = 2;
-    private int number = 1;
-    private NumberGame numberGame;
+    private int timerSeconds = 2 + NumberGame.getLevel();
+    private String numberString;
+
 
     public NumberFragment1() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NumberFragment1.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NumberFragment1 newInstance(String param1, String param2) {
-        NumberFragment1 fragment = new NumberFragment1();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
-
     }
 
     @Override
@@ -73,9 +48,10 @@ public class NumberFragment1 extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
 
-        numberGame = new NumberGame();
         TextView textview = (TextView) view.findViewById(R.id.numberView);
-        textview.setText(numberGame.generateNumber());
+
+        numberString = NumberGame.generateNumberString();
+        textview.setText(numberString);
 
 
         mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
@@ -92,17 +68,19 @@ public class NumberFragment1 extends Fragment {
             public void onFinish() {
                 mProgressBar.setProgress(100);
 
+                NumberFragment2 fragment = new NumberFragment2();
+                Bundle args = new Bundle();
+                args.putString("numberString",numberString);
+                fragment.setArguments(args);
+
                 getFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.flFragment, new NumberFragment2())
+                        .replace(R.id.flFragment, fragment)
                         .commit();
             }
         };
         mCountDownTimer.start();
 
     }
-
-
-
 
 }

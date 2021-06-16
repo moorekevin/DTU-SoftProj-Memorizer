@@ -12,11 +12,11 @@ import java.util.Random;
 
 
 public class NumberGame extends AppCompatActivity {
-    private static int number;
+    private static int level;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        number = 0;
+        level = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.number_layout);
 
@@ -29,19 +29,22 @@ public class NumberGame extends AppCompatActivity {
 
         fragmentTransaction.replace(R.id.flFragment, mFragment).commit();
 
-
     }
 
-    public String generateNumber() {
-        number++;
+    public static String generateNumberString() {
+        level++;
 
         String numberString = "";
-        for (int i = 0; i < number; i++) {
+        for (int i = 0; i < level; i++) {
             Random rand = new Random();
             int n = rand.nextInt(10);
             numberString += n;
         }
         return numberString;
-
     }
+
+    public static int getLevel() {
+        return level;
+    }
+
 }
