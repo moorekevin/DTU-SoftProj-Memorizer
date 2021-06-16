@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import dtu.softproj.memorizer.numberMemoryGame.NumberMemoryActivity;
+import dtu.softproj.memorizer.sequenceMemoryGame.SequenceActivity;
+import dtu.softproj.memorizer.visualMemoryGame.VisualMemoryActivity;
+
 public class MainActivity extends AppCompatActivity {
     private ImageButton mButton;
     final private String toastMessage = "More game modes will be added soon";

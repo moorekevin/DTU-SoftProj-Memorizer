@@ -1,4 +1,4 @@
-package dtu.softproj.memorizer;
+package dtu.softproj.memorizer.numberMemoryGame;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.app.Fragment;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
+import dtu.softproj.memorizer.R;
 
 
 /**

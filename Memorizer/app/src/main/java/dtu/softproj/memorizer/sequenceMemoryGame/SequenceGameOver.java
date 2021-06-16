@@ -1,4 +1,4 @@
-package dtu.softproj.memorizer;
+package dtu.softproj.memorizer.sequenceMemoryGame;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,6 +9,9 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import dtu.softproj.memorizer.MainActivity;
+import dtu.softproj.memorizer.R;
 
 public class SequenceGameOver extends AppCompatActivity {
 

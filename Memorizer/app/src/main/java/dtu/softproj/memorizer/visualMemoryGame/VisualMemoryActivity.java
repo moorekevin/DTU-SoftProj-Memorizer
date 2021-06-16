@@ -1,4 +1,4 @@
-package dtu.softproj.memorizer;
+package dtu.softproj.memorizer.visualMemoryGame;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,6 +10,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import dtu.softproj.memorizer.R;
 
 public class VisualMemoryActivity extends AppCompatActivity {
     private Button mPlayButton;

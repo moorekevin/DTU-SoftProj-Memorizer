@@ -1,10 +1,8 @@
-package dtu.softproj.memorizer;
+package dtu.softproj.memorizer.numberMemoryGame;
 
 import android.os.Bundle;
 
 import android.app.Fragment;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -12,9 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.content.Context;
 
-import java.util.Random;
+import dtu.softproj.memorizer.R;
 
 public class NumberFragment1 extends Fragment {
 

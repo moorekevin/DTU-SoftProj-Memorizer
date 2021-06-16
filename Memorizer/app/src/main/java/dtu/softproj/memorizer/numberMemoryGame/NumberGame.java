@@ -1,4 +1,4 @@
-package dtu.softproj.memorizer;
+package dtu.softproj.memorizer.numberMemoryGame;
 
 import android.os.Bundle;
 
@@ -9,6 +9,8 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 
 import java.util.Random;
+
+import dtu.softproj.memorizer.R;
 
 
 public class NumberGame extends AppCompatActivity {

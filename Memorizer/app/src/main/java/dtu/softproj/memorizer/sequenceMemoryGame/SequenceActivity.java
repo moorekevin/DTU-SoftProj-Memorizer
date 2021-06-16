@@ -1,19 +1,20 @@
-package dtu.softproj.memorizer;
+package dtu.softproj.memorizer.sequenceMemoryGame;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.Button;
 import android.view.View;
-import android.content.Intent;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 
-public class NumberMemoryActivity extends AppCompatActivity {
- private Button mPlayButton;
+import dtu.softproj.memorizer.R;
+
+public class SequenceActivity extends AppCompatActivity {
+    private Button mPlayButton;
 
     public void onCreate(Bundle savedInstanceState) {
 
@@ -23,26 +24,24 @@ public class NumberMemoryActivity extends AppCompatActivity {
 
         // Setting the background color
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.playRelativeLayout);
-        rLayout.setBackgroundColor(Color.parseColor("#88ff98"));
+        rLayout.setBackgroundColor(Color.parseColor("#ff9494"));
         // Setting the logo
         ImageView img = (ImageView) findViewById(R.id.imageView);
-        img.setImageResource(R.drawable.numbermemory_logo);
+        img.setImageResource(R.drawable.sequence_logo);
         // Setting the game name
         TextView gameName = (TextView) findViewById(R.id.gameName);
-        gameName.setText("Number Memory");
+        gameName.setText("Sequence Memory");
         // Setting the game description
         TextView gameDescription = (TextView) findViewById(R.id.gameDescription);
-        gameDescription.setText("Memorize the longest sequence of numbers. \n " +
-                "The average person can remember \n 7 numbers at once");
+        gameDescription.setText("Remember an increasingly long pattern \n" +
+                "of button presses");
 
         mPlayButton.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                   Intent playIntent = new Intent(NumberMemoryActivity.this, NumberGame.class);
-                   startActivity(playIntent);
+            @Override
+            public void onClick(View v) {
+                Intent playIntent = new Intent(SequenceActivity.this, SequenceGameOver.class);
+                startActivity(playIntent);
             }
         });
     }
-
-    
 }

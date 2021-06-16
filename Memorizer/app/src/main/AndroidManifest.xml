@@ -18,16 +18,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".NumberMemoryActivity"
+        <activity android:name=".numberMemoryGame.NumberMemoryActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".NumberGameOver"/>
+        <activity android:name=".numberMemoryGame.NumberGameOver"/>
+
+        <activity android:name=".sequenceMemoryGame.SequenceActivity"/>
+        <activity android:name=".sequenceMemoryGame.SequenceGameOver"/>
         
-        <activity android:name=".SequenceActivity"/>
-        <activity android:name=".SequenceGameOver"/>
-        
-        <activity android:name=".VisualMemoryActivity"/>
-        <activity android:name=".VisualGameOver"/>
-        <activity android:name=".NumberGame"/>
+        <activity android:name=".visualMemoryGame.VisualMemoryActivity"/>
+        <activity android:name=".visualMemoryGame.VisualGameOver"/>
+        <activity android:name=".numberMemoryGame.NumberGame"/>
 
     </application>
 

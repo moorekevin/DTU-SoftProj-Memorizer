@@ -1,4 +1,4 @@
-package dtu.softproj.memorizer;
+package dtu.softproj.memorizer.numberMemoryGame;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.Button;
 
 import android.app.Fragment;
 import android.widget.TextView;
+
+import dtu.softproj.memorizer.R;
 
 ///**
 // * A simple {@link Fragment} subclass.
