@@ -39,7 +39,7 @@ public class SequenceActivity extends AppCompatActivity {
         mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent playIntent = new Intent(SequenceActivity.this, SequenceGameOver.class);
+                Intent playIntent = new Intent(SequenceActivity.this, SequenceGame.class);
                 startActivity(playIntent);
             }
         });
