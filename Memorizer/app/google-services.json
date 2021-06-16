@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "67420787840",
+    "project_id": "dtu-memorizer",
+    "storage_bucket": "dtu-memorizer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67420787840:android:e4ac3dd58ec3c628ff8265",
+        "android_client_info": {
+          "package_name": "dtu.softproj.memorizer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67420787840-f6ds3phsoeiuvphh7ulj4hn8gqarkmjv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNZzqqwcs7Yn9XUt2qi2VWGaPIVYPM6Xs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67420787840-f6ds3phsoeiuvphh7ulj4hn8gqarkmjv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
