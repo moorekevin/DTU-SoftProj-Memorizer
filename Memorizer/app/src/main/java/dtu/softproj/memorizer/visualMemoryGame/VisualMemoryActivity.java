@@ -39,7 +39,7 @@ public class VisualMemoryActivity extends AppCompatActivity {
         mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent playIntent = new Intent(VisualMemoryActivity.this, VisualGameOver.class);
+                Intent playIntent = new Intent(VisualMemoryActivity.this, VisualMemoryGame.class);
                 startActivity(playIntent);
             }
         });
