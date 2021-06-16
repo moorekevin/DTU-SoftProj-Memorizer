@@ -11,11 +11,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import dtu.softproj.memorizer.R;
 
 
 public class NumberMemoryActivity extends AppCompatActivity {
  private Button mPlayButton;
+ private DatabaseReference mUserDatabase;
 
     public void onCreate(Bundle savedInstanceState) {
 
@@ -36,6 +40,14 @@ public class NumberMemoryActivity extends AppCompatActivity {
         TextView gameDescription = (TextView) findViewById(R.id.gameDescription);
         gameDescription.setText("Memorize the longest sequence of numbers. \n " +
                 "The average person can remember \n 7 numbers at once");
+
+        // Setting the highscore using the database
+        mUserDatabase = FirebaseDatabase.getInstance("https://dtu-memorizer-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("users");
+
+
+        FirebaseDatabase.getInstance().getReference().setValue("test");
+        mUserDatabase.setValue("apptest");
 
         mPlayButton.setOnClickListener(new View.OnClickListener() {
               @Override
