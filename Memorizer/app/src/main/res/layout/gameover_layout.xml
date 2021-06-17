@@ -64,7 +64,7 @@
             android:id="@+id/statisticsButton"
             android:layout_width="230dp"
             android:layout_height="78dp"
-            android:layout_below="@+id/typeName"
+            android:layout_below="@+id/name_submit"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="7.5dp"
@@ -93,17 +93,53 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/highscore"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/staatliches"
-            android:hint="Type your name to save your highscore"
+            android:hint="Type name to save score"
             android:inputType="text"
             android:shadowColor="@color/black"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textColorHint="#73AE7B"
             android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/name_submit"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/typeName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="25dp"
+            android:fontFamily="@font/staatliches"
+            android:shadowColor="@color/black"
+            android:text="SUBMIT"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_button"/>
+
+        <TextView
+            android:id="@+id/yourScoreValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/staatliches"
+            android:layout_alignTop="@+id/yourScore"
+            android:layout_toRightOf="@+id/yourScore"
+            android:text="SCORE"
+            android:textSize="30sp"/>
+
+        <TextView
+            android:id="@+id/highScoreValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/staatliches"
+            android:layout_alignTop="@+id/highscore"
+            android:layout_toRightOf="@+id/highscore"
+            android:text="SCORE"
+            android:textSize="30sp"/>
 
 
     </RelativeLayout>

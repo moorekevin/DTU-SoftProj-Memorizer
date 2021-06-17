@@ -20,7 +20,8 @@
         </activity>
 
         <activity android:name=".numberMemoryGame.NumberMemoryActivity"/>
-        <activity android:name=".numberMemoryGame.NumberGameOver"/>
+        <activity android:name=".numberMemoryGame.NumberGameOver"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
 
         <activity android:name=".sequenceMemoryGame.SequenceActivity"/>
         <activity android:name=".sequenceMemoryGame.SequenceGameOver"/>
