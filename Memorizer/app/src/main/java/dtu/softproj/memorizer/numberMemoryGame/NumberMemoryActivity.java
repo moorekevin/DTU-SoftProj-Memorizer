@@ -10,16 +10,22 @@ import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import dtu.softproj.memorizer.R;
+import dtu.softproj.memorizer.User;
 
 
 public class NumberMemoryActivity extends AppCompatActivity {
-    private Button mPlayButton;
-    private DatabaseReference mUserDatabase;
+ private Button mPlayButton;
+ private DatabaseReference mUserDatabase;
 
     public void onCreate(Bundle savedInstanceState) {
 
@@ -42,12 +48,29 @@ public class NumberMemoryActivity extends AppCompatActivity {
                 "The average person can remember \n 7 numbers at once");
 
         // Setting the highscore using the database
+        TextView allTimeScore = (TextView) findViewById(R.id.gameHighScoreValue);
+
         mUserDatabase = FirebaseDatabase.getInstance("https://dtu-memorizer-default-rtdb.europe-west1.firebasedatabase.app/")
-                .getReference("users");
+                .getReference("users/numberGame");
+        // Finding the player with the highest score in game
+        Query mDatabaseHighestPlayer = mUserDatabase.orderByChild("score").limitToLast(1);
+        mDatabaseHighestPlayer.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot){
+                for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+                    if (childSnapshot.exists()) {
+                        User user = childSnapshot.getValue(User.class);
+                        user.setName(childSnapshot.getKey());
+                        allTimeScore.setText("" + user.getName() + " with the score of " + user.getScore() + "!");
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                throw databaseError.toException();
+            }
+        });
 
-
-//        FirebaseDatabase.getInstance().getReference().setValue("test");
-//        mUserDatabase.setValue("OK");
 
         mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,5 +81,5 @@ public class NumberMemoryActivity extends AppCompatActivity {
         });
     }
 
-
+    
 }
