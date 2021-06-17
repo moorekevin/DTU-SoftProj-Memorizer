@@ -13,13 +13,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import dtu.softproj.memorizer.MainActivity;
 import dtu.softproj.memorizer.R;
+import dtu.softproj.memorizer.numberMemoryGame.NumberGame;
 
 public class SequenceGameOver extends AppCompatActivity {
 
     private Button mPlayAgain;
     private Button mStatistics;
     private ImageButton homeButton;
-    private TextView yourScore;
+    private TextView mYourScoreValue;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,9 +29,9 @@ public class SequenceGameOver extends AppCompatActivity {
         mPlayAgain = (Button) findViewById(R.id.playAgainButton);
 //        mStatistics = (Button) findViewById(R.id.statisticsButton);
         homeButton = (ImageButton) findViewById(R.id.homeButton);
-        yourScore = (TextView) findViewById(R.id.yourScore);
+        mYourScoreValue = (TextView) findViewById(R.id.yourScoreValue);
 
-        yourScore.setText("YOUR SCORE: " + SequenceGame.getLevel());
+        mYourScoreValue.setText("" + (SequenceGame.getLevel()-1));
 
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.gameOverRelativeLayout);
         rLayout.setBackgroundColor(Color.parseColor("#ff9494"));
