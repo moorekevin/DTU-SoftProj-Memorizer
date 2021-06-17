@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +19,7 @@ public class SequenceGameOver extends AppCompatActivity {
     private Button mPlayAgain;
     private Button mStatistics;
     private ImageButton homeButton;
+    private TextView yourScore;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,9 @@ public class SequenceGameOver extends AppCompatActivity {
         mPlayAgain = (Button) findViewById(R.id.playAgainButton);
 //        mStatistics = (Button) findViewById(R.id.statisticsButton);
         homeButton = (ImageButton) findViewById(R.id.homeButton);
+        yourScore = (TextView) findViewById(R.id.yourScore);
+
+        yourScore.setText("YOUR SCORE: " + SequenceGame.getLevel());
 
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.gameOverRelativeLayout);
         rLayout.setBackgroundColor(Color.parseColor("#ff9494"));

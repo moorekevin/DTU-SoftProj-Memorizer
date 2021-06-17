@@ -18,8 +18,8 @@ import dtu.softproj.memorizer.R;
 
 
 public class NumberMemoryActivity extends AppCompatActivity {
- private Button mPlayButton;
- private DatabaseReference mUserDatabase;
+    private Button mPlayButton;
+    private DatabaseReference mUserDatabase;
 
     public void onCreate(Bundle savedInstanceState) {
 
@@ -50,13 +50,13 @@ public class NumberMemoryActivity extends AppCompatActivity {
 //        mUserDatabase.setValue("OK");
 
         mPlayButton.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                   Intent playIntent = new Intent(NumberMemoryActivity.this, NumberGame.class);
-                   startActivity(playIntent);
+            @Override
+            public void onClick(View v) {
+                Intent playIntent = new Intent(NumberMemoryActivity.this, NumberGame.class);
+                startActivity(playIntent);
             }
         });
     }
 
-    
+
 }
