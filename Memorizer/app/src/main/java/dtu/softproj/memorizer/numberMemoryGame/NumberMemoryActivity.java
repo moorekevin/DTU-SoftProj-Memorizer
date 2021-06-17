@@ -70,6 +70,15 @@ public class NumberMemoryActivity extends AppCompatActivity {
                 throw databaseError.toException();
             }
         });
+
+        
+        mPlayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent playIntent = new Intent(NumberMemoryActivity.this, NumberGame.class);
+                startActivity(playIntent);
+            }
+        });
     }
 
     
