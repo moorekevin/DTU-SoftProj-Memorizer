@@ -1,14 +1,22 @@
 package dtu.softproj.memorizer.sequenceMemoryGame;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -21,13 +29,15 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
     private int currentNum;
     private boolean isSequenceBeingDisplayed;
     private final int DISPLAY_TIME = 1000;
-    private final int DELAY_TIME = 500;
+    private final int DELAY_TIME = 1000;
     private static int level;
+    private ConstraintLayout cLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sequence_layout);
+        cLayout = (ConstraintLayout) findViewById(R.id.sequence_layout);
         level = 1;
         sequence = new ArrayList<Integer>();
 
@@ -100,6 +110,17 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
             }, DISPLAY_TIME * (i + 1) + DELAY_TIME);
         }
     }
+    
+    @SuppressLint("WrongConstant")
+    public void manageBlinkEffect(ConstraintLayout cLayout , String startColor, String endColor) {
+        ObjectAnimator anim = ObjectAnimator.ofInt(cLayout , "backgroundColor",
+                Color.parseColor(startColor) , Color.parseColor(endColor));
+        anim.setDuration(500);
+        anim.setEvaluator(new ArgbEvaluator());
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(1);
+        anim.start();
+    }
 
     @Override
     public void onClick(View view) {
@@ -112,6 +133,8 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
                     level = sequence.size();
                     levelTextView.setText("LEVEL: " + level);
                     currentNum = 0;
+                    manageBlinkEffect(cLayout , "#ff9494", "#94ff9B");
+//                    cLayout.setBackgroundColor(Color.parseColor("#ff9494"));
                     displaySequence();
                 }
             } else {
