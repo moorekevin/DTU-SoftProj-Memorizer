@@ -30,6 +30,7 @@
         <activity android:name=".visualMemoryGame.VisualGameOver"/>
         <activity android:name=".numberMemoryGame.NumberGame"/>
         <activity android:name=".visualMemoryGame.VisualMemoryGame"/>
+
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package dtu.softproj.memorizer.sequenceMemoryGame;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -53,7 +54,6 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-//            System.out.println(sequence.get(0) + "  trykket på: " + view.getId());
         if (view.getId() == sequence.get(currentNum)) {
             System.out.println("Du har trykket på den rigtige knap");
             currentNum++;
@@ -65,7 +65,9 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
                 currentNum = 0;
             }
         } else {
-            System.out.println("Du har tabt");
+            finish();
+            Intent intent = new Intent(SequenceGame.this, SequenceGameOver.class);
+            startActivity(intent);
         }
     }
 }

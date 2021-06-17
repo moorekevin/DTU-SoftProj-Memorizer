@@ -46,8 +46,8 @@ public class NumberMemoryActivity extends AppCompatActivity {
                 .getReference("users");
 
 
-        FirebaseDatabase.getInstance().getReference().setValue("test");
-        mUserDatabase.setValue("apptest");
+//        FirebaseDatabase.getInstance().getReference().setValue("test");
+//        mUserDatabase.setValue("OK");
 
         mPlayButton.setOnClickListener(new View.OnClickListener() {
               @Override

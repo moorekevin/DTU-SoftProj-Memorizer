@@ -23,7 +23,7 @@ public class SequenceGameOver extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gameover_layout);
-//        mPlayAgain = (Button) findViewById(R.id.playAgainButton);
+        mPlayAgain = (Button) findViewById(R.id.playAgainButton);
 //        mStatistics = (Button) findViewById(R.id.statisticsButton);
         homeButton = (ImageButton) findViewById(R.id.homeButton);
 
@@ -35,7 +35,15 @@ public class SequenceGameOver extends AppCompatActivity {
             public void onClick(View v) {
                 Intent gameHomeIntent = new Intent(SequenceGameOver.this, MainActivity.class);
                 startActivity(gameHomeIntent);
+            }
+        });
 
+        mPlayAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent restartIntent = new Intent(SequenceGameOver.this, SequenceGame.class);
+                startActivity(restartIntent);
             }
         });
     }
