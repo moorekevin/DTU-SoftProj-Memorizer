@@ -21,6 +21,7 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
     private int currentNum;
     private boolean isSequenceBeingDisplayed;
     private final int DISPLAY_TIME = 1000;
+    private final int DELAY_TIME = 500;
     private static int level;
 
     @Override
@@ -84,7 +85,7 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
                 public void run() {
                     buttons[sequence.get(finalI)].getBackground().setLevel(1);
                 }
-            }, DISPLAY_TIME * i);
+            }, DISPLAY_TIME * i + DELAY_TIME);
 
             handler.postDelayed(new Runnable() {
                 @Override
@@ -96,7 +97,7 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
                             buttons[i].setSoundEffectsEnabled(true);
                     }
                 }
-            }, DISPLAY_TIME * (i + 1));
+            }, DISPLAY_TIME * (i + 1) + DELAY_TIME);
         }
     }
 

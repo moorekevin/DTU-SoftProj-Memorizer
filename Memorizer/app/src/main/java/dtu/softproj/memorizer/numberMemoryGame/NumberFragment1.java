@@ -1,5 +1,6 @@
 package dtu.softproj.memorizer.numberMemoryGame;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import android.app.Fragment;
@@ -44,6 +45,8 @@ public class NumberFragment1 extends Fragment {
 
 
         mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+        mProgressBar.getProgressDrawable().setColorFilter(
+                Color.rgb(0, 180, 0), android.graphics.PorterDuff.Mode.SRC_IN);
         mProgressBar.setProgress(progress);
 
         mCountDownTimer = new CountDownTimer(timerSeconds * 1000, 50) {
