@@ -18,7 +18,6 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
     private ArrayList<Integer> sequence;
     private Button[] buttons;
     private int currentNum;
-//    private View.OnClickListener btnClick = new View.OnClickListene() {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

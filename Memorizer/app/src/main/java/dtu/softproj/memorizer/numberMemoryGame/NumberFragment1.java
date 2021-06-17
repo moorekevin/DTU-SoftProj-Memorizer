@@ -15,14 +15,6 @@ import dtu.softproj.memorizer.R;
 
 public class NumberFragment1 extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-//    private String mParam1;
-//    private String mParam2;
     private ProgressBar mProgressBar;
     private CountDownTimer mCountDownTimer;
     private int progress = 0;
@@ -60,25 +52,35 @@ public class NumberFragment1 extends Fragment {
                 progress++;
                 mProgressBar.setProgress((int) progress * 5 / (timerSeconds));
             }
-            // TODO: Timer crashes the program if you go back or press the home button
 
             @Override
             public void onFinish() {
-                mProgressBar.setProgress(100);
-
-                NumberFragment2 fragment = new NumberFragment2();
-                Bundle args = new Bundle();
-                args.putString("numberString",numberString);
-                fragment.setArguments(args);
-
-                getFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.flFragment, fragment)
-                        .commit();
+                startNumberFragment2();
             }
         };
         mCountDownTimer.start();
 
+    }
+
+    public void startNumberFragment2() {
+        mProgressBar.setProgress(100);
+
+        NumberFragment2 fragment = new NumberFragment2();
+        Bundle args = new Bundle();
+        args.putString("numberString", numberString);
+        fragment.setArguments(args);
+
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flFragment, fragment)
+                .commit();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mCountDownTimer.cancel();
+        startNumberFragment2();
     }
 
 }
