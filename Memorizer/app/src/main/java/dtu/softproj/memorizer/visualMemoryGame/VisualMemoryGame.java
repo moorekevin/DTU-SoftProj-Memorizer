@@ -19,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import dtu.softproj.memorizer.R;
 
 public class VisualMemoryGame extends AppCompatActivity {
-    public static final String gameName = "Visual Memory";
+    public static final String GAME_NAME = "Visual Memory";
     private final int DISPLAY_TIME = 1500;
     private final int END_DELAY = 1000;
     private final int START_DELAY = 750;

@@ -23,7 +23,7 @@ import java.util.Random;
 import dtu.softproj.memorizer.R;
 
 public class SequenceGame extends AppCompatActivity implements View.OnClickListener {
-    public static final String gameName = "Sequence Memory";
+    public static final String GAME_NAME = "Sequence Memory";
     private final int DISPLAY_TIME = 1000;
     private final int DELAY_TIME = 1000;
     private ArrayList<Integer> sequence;

@@ -53,7 +53,7 @@ public class NumberGameOver extends AppCompatActivity {
 
         // Saving the score locally using current time and date for key (if score is greater than 0)
         if (NumberGame.getLevel() > 1) {
-            SharedPreferences prefs = this.getSharedPreferences(NumberGame.gameName, Context.MODE_PRIVATE);
+            SharedPreferences prefs = this.getSharedPreferences(NumberGame.GAME_NAME, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             Date date = new Date();
@@ -62,7 +62,7 @@ public class NumberGameOver extends AppCompatActivity {
         }
 
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.gameOverRelativeLayout);
-        rLayout.setBackgroundColor(Color.parseColor(NumberGame.gameColor));
+        rLayout.setBackgroundColor(Color.parseColor(NumberGame.GAME_COLOR));
 
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +112,7 @@ public class NumberGameOver extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(NumberGameOver.this, Statistics.class);
-                intent.putExtra("Game", NumberGame.gameName);
+                intent.putExtra("Game", NumberGame.GAME_NAME);
                 startActivity(intent);
             }
         });

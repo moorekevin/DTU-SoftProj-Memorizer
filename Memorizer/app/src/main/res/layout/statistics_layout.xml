@@ -37,10 +37,10 @@
             android:background="@drawable/rounded_button"
             android:fontFamily="@font/staatliches"
             android:shadowColor="@color/black"
-            android:text="Sequence Memory"
+            android:text="Sequence"
             android:textAllCaps="false"
             android:textColor="@android:color/black"
-            android:textSize="14sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/numbergamebutton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,10 +53,10 @@
             android:background="@drawable/rounded_button"
             android:fontFamily="@font/staatliches"
             android:shadowColor="@color/black"
-            android:text="Number Memory"
+            android:text="Number"
             android:textAllCaps="false"
             android:textColor="@android:color/black"
-            android:textSize="14sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/visualgamebutton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/sequencegamebutton"
@@ -69,10 +69,10 @@
             android:background="@drawable/rounded_button"
             android:fontFamily="@font/staatliches"
             android:shadowColor="@color/black"
-            android:text="Visual Memory"
+            android:text="Visual"
             android:textAllCaps="false"
             android:textColor="@android:color/black"
-            android:textSize="14sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/numbergamebutton"
@@ -101,13 +101,15 @@
                 <TextView
                     android:padding="4dip"
                     android:text="Date and time"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:gravity="right"
                     android:padding="4dip"
                     android:text="Score"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
             </TableRow>
 
             <View

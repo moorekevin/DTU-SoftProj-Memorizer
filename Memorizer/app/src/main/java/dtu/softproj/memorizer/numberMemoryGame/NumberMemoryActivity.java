@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,7 +40,7 @@ public class NumberMemoryActivity extends AppCompatActivity {
         img.setImageResource(R.drawable.numbermemory_logo);
         // Setting the game name
         TextView gameName = (TextView) findViewById(R.id.gameName);
-        gameName.setText(NumberGame.gameName);
+        gameName.setText(NumberGame.GAME_NAME);
         // Setting the game description
         TextView gameDescription = (TextView) findViewById(R.id.gameDescription);
         gameDescription.setText("Memorize the longest sequence of numbers. \n " +

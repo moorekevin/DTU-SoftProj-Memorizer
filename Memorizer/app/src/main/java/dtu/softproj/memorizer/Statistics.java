@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -37,18 +36,22 @@ public class Statistics extends AppCompatActivity {
 
         // Getting the game info that called statistics
         game = getIntent().getStringExtra("Game");
-        mGameName.setText(game);
+        if (!game.equals(MainActivity.ACTIVITY_NAME)) {
+            mGameName.setText(game);
+        }
 
         LinearLayout rLayout = (LinearLayout) findViewById(R.id.stasticsRelativeLayout);
-        switch(game) {
-            case NumberGame.gameName:
-//                rLayout.setBackgroundColor(Color.parseColor(NumberGame.gameColor));
+        switch (game) {
+            case NumberGame.GAME_NAME:
                 break;
 
-            case SequenceGame.gameName:
+            case SequenceGame.GAME_NAME:
                 break;
 
-            case VisualMemoryGame.gameName:
+            case VisualMemoryGame.GAME_NAME:
+                break;
+
+            case MainActivity.ACTIVITY_NAME:
                 break;
         }
 
@@ -66,10 +69,15 @@ public class Statistics extends AppCompatActivity {
         TextView date = new TextView(this);
         date.setPadding(3, 3, 3, 3);
         date.setText("" + dateKey);
+        date.setTextColor(Color.BLACK);
+        date.setTextSize(20);
 
         TextView score = new TextView(this);
         score.setGravity(Gravity.RIGHT);
         score.setText("" + scoreKey);
+        score.setTextColor(Color.BLACK);
+        score.setTextSize(20);
+
 
         tr.addView(date);
         tr.addView(score);
@@ -77,7 +85,7 @@ public class Statistics extends AppCompatActivity {
 
     }
 
-    public void sortLocalTable () {
+    public void sortLocalTable() {
         SharedPreferences prefs = this.getSharedPreferences(game, Context.MODE_PRIVATE);
         HashMap scoreMap = (HashMap) prefs.getAll();
 
