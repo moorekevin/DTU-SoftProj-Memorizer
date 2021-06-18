@@ -24,7 +24,7 @@ public class VisualMemoryActivity extends AppCompatActivity {
 
         // Setting the background color
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.playRelativeLayout);
-        rLayout.setBackgroundColor(Color.parseColor("#fff781"));
+        rLayout.setBackgroundColor(Color.parseColor("#88e3ff"));
         // Setting the logo
         ImageView img = (ImageView) findViewById(R.id.imageView);
         img.setImageResource(R.drawable.visualmemory_logo);

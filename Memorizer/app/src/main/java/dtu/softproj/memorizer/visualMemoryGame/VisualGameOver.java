@@ -35,7 +35,7 @@ public class VisualGameOver extends AppCompatActivity {
         homeButton = (ImageButton) findViewById(R.id.homeButton);
 
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.gameOverRelativeLayout);
-        rLayout.setBackgroundColor(Color.parseColor("#fff781"));
+        rLayout.setBackgroundColor(Color.parseColor("#88e3ff"));
 
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override

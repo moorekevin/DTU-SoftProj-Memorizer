@@ -1,10 +1,14 @@
 package dtu.softproj.memorizer.visualMemoryGame;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
+import android.os.Handler;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,33 +20,40 @@ import dtu.softproj.memorizer.R;
 
 public class VisualMemoryGame extends AppCompatActivity {
     public static final String gameName = "Visual Memory";
+    private final int DISPLAY_TIME = 1500;
+    private final int END_DELAY = 1000;
+    private final int START_DELAY = 750;
+    private final int MAX_GRID_SIZE = 8;
     private int level = 1;
     private int lives = 3;
     private int tempLives = 3;
-    private Button[][] buttons = new Button[8][8];
+    private Button[][] buttons = new Button[MAX_GRID_SIZE][MAX_GRID_SIZE];
     private boolean[][] grid;
     private int numberOfTrueTilesPressed;
+    private boolean isTilesDisplayed;
     private CountDownTimer mCountDownTimer;
-    private int screenSizeLowest;
-    private TextView tvLevel;
-    private TextView tvLives;
+    private LinearLayout rLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.visual_memory_layout);
+        rLayout = (LinearLayout) findViewById(R.id.visual_layout);
         buttonViewsToArray();
-        initFields();
+
+        for (int i = 0; i < MAX_GRID_SIZE; i++) {
+            for (int j = 0; j < MAX_GRID_SIZE; j++) {
+                buttons[i][j].setEnabled(false);
+            }
+        }
 
         startRound();
-
-
     }
 
 
-    public void buttonViewsToArray(){
-        for (int i = 0; i <  8; i++){
-            for (int j = 0; j < 8; j++){
+    public void buttonViewsToArray() {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
                 String buttonId = "b" + (i + 1) + "_" + (j + 1);
                 int resId = getResources().getIdentifier(buttonId, "id", getPackageName());
                 buttons[i][j] = (Button) findViewById(resId);
@@ -51,21 +62,6 @@ public class VisualMemoryGame extends AppCompatActivity {
         }
     }
 
-    public void initFields(){
-        tvLevel = findViewById(R.id.tvLevel);
-        tvLives = findViewById(R.id.tvLives);
-        //TODO Change to use weight in linearLayout? If not, check if this works on other screen sizes
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int screenHeight = displayMetrics.heightPixels;
-        int screenWidth = displayMetrics.widthPixels;
-
-        if (screenWidth > screenHeight - 600) {
-            screenSizeLowest = screenHeight - 600;
-        } else {
-            screenSizeLowest = screenWidth;
-        }
-    }
 
     public void startRound() {
         makeGUI();
@@ -75,13 +71,14 @@ public class VisualMemoryGame extends AppCompatActivity {
     }
 
     public void makeGUI() {
-        //reset();
+        TextView tvLevel = findViewById(R.id.tvLevel);
+        TextView tvLives = findViewById(R.id.tvLives);
         tvLevel.setText("Level: " + level);
         tvLives.setText("Lives: " + lives);
 
         int dimension = getDimensionFromLevel();
-        for (int i = 0; i < dimension; i++){
-            for (int j = dimension; j < 8; j++){
+        for (int i = 0; i < dimension; i++) {
+            for (int j = dimension; j < MAX_GRID_SIZE; j++) {
 
                 //Set visibility for linearLayout rows
                 String rowResId = "linearLayout" + (j + 1);
@@ -96,18 +93,7 @@ public class VisualMemoryGame extends AppCompatActivity {
 
     }
 
-    public void reset(){
-        for (int i = 0; i < 8; i ++){
-            String rowResId = "linearLayout" + (i + 1);
-            int rowId = getResources().getIdentifier(rowResId, "id", getPackageName());
-            LinearLayout row = findViewById(rowId);
-            row.setVisibility(View.VISIBLE);
-            for (int j = 0; j < 8; j++){
-                buttons[i][j].setVisibility(View.VISIBLE);
 
-            }
-        }
-    }
     public void generateTrueTiles() {
         int numberOfTrueTiles = level + 2;
         int dimension = getDimensionFromLevel();
@@ -123,110 +109,140 @@ public class VisualMemoryGame extends AppCompatActivity {
             }
         }
     }
-    public void showTrueTiles() {
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid.length; j++) {
-                if (grid[i][j]) {
-                    buttons[i][j].setBackgroundColor(Color.parseColor("#9CD2CE"));
-                }
-            }
-        }
-        //TODO make it so you can't press buttons while showing the correct ones
-        //TODO Consider give longer time based on amount of squares/grid size?
-        //TODO problem if finishing level before 'un-showing' the correct tiles
-        mCountDownTimer = new CountDownTimer(1500, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
 
+    public void showTrueTiles() {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
             @Override
-            public void onFinish() {
+            public void run() {
                 for (int i = 0; i < grid.length; i++) {
                     for (int j = 0; j < grid.length; j++) {
-                        buttons[i][j].setBackgroundColor(Color.parseColor("#4E9AE6"));
+                        if (grid[i][j]) {
+                            buttons[i][j].getBackground().setLevel(1);
+                        }
                     }
                 }
             }
-        };
-        mCountDownTimer.start();
+        }, START_DELAY);
+
+        //TODO make it so you can't press buttons while showing the correct ones
+        //TODO Consider give longer time based on amount of squares/grid size?
+        //TODO problem if finishing level before 'un-showing' the correct tiles
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < grid.length; i++) {
+                    for (int j = 0; j < grid.length; j++) {
+                        buttons[i][j].getBackground().setLevel(0);
+                        buttons[i][j].setEnabled(true);
+                    }
+                }
+                isTilesDisplayed = false;
+            }
+        }, DISPLAY_TIME + END_DELAY);
     }
-    public void defButtonOnClick(){
+
+    public void defButtonOnClick() {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid.length; j++) {
                 defOnClick(buttons[i][j], grid[i][j]);
             }
         }
     }
+
     public void defOnClick(Button btn, boolean isTrueTile) {
         btn.setOnClickListener((View v) -> {
             btn.setEnabled(false);
             if (isTrueTile) {
                 numberOfTrueTilesPressed++;
+                btn.getBackground().setLevel(2);
                 if (numberOfTrueTilesPressed == level + 2) {
                     roundOver(true);
-                } else{
-                    btn.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                } else {
+
+                    //btn.setBackgroundColor(Color.parseColor("#9CD2CE"));
                 }
             } else {
                 tempLives--;
+                btn.getBackground().setLevel(3);
                 if (tempLives < 1) {
                     roundOver(false);
                 } else {
-                    btn.setBackgroundColor(Color.parseColor("#294191"));
+
+                    //btn.setBackgroundColor(Color.parseColor("#294191"));
                 }
             }
         });
     }
 
     public void roundOver(boolean roundWon) {
-        if (roundWon){
-            level++;
-            newRound();
-        } else {
-            lives--;
-            if (lives > 0) {
-                newRound();
-            } else {
-                finish();
-                Intent intent = new Intent(VisualMemoryGame.this, VisualGameOver.class);
-                startActivity(intent);
+        isTilesDisplayed = true;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid.length; j++) {
+                buttons[i][j].setEnabled(false);
             }
         }
+
+        if (roundWon) {
+            manageBlinkEffect(rLayout, "#88e3ff", "#94ff9B");
+        } else {
+            manageBlinkEffect(rLayout, "#88e3ff", "#ff6d6d");
+        }
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (roundWon) {
+                    level++;
+                    newRound();
+                } else {
+                    lives--;
+                    if (lives > 0) {
+                        newRound();
+                    } else {
+                        finish();
+                        Intent intent = new Intent(VisualMemoryGame.this, VisualGameOver.class);
+                        startActivity(intent);
+                    }
+                }
+            }
+        }, END_DELAY);
+
     }
 
     public void newRound() {
-        revertToStart();
-        startRound();
-    }
-
-    public void revertToStart(){
         resetAllButtons();
         numberOfTrueTilesPressed = 0;
         tempLives = 3;
+        startRound();
     }
 
     public void resetAllButtons() {
-       /*
-        String rowResId = "linearLayout" + getDimensionFromLevel();
-
-        int rowId = getResources().getIdentifier(rowResId, "id", getPackageName());
-        LinearLayout layout = findViewById(rowId);
-        layout.setVisibility(View.VISIBLE);
-        */
-        for (int i = 0; i < 8; i++){
-
+        for (int i = 0; i < MAX_GRID_SIZE; i++) {
             String rowResId = "linearLayout" + (i + 1);
             int rowId = getResources().getIdentifier(rowResId, "id", getPackageName());
             LinearLayout row = findViewById(rowId);
             row.setVisibility(View.VISIBLE);
 
-            for (int j = 0; j < 8; j++) {
-                buttons[i][j].setEnabled(true);
-                buttons[i][j].setBackgroundColor(Color.parseColor("#6495ED"));
+            for (int j = 0; j < MAX_GRID_SIZE; j++) {
+                //buttons[i][j].setEnabled(true);
+                buttons[i][j].getBackground().setLevel(0);
+                //buttons[i][j].setBackgroundColor(Color.parseColor("#6495ED"));
                 buttons[i][j].setVisibility(View.VISIBLE);
-
             }
         }
+    }
+
+    @SuppressLint("WrongConstant")
+    public void manageBlinkEffect(LinearLayout cLayout, String startColor, String endColor) {
+        ObjectAnimator anim = ObjectAnimator.ofInt(cLayout, "backgroundColor",
+                Color.parseColor(startColor), Color.parseColor(endColor));
+        anim.setDuration(300);
+        anim.setEvaluator(new ArgbEvaluator());
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(1);
+        anim.start();
     }
 
     public int getDimensionFromLevel() {

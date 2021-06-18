@@ -23,12 +23,12 @@ import dtu.softproj.memorizer.R;
 
 public class SequenceGame extends AppCompatActivity implements View.OnClickListener {
     public static final String gameName = "Sequence Memory";
+    private final int DISPLAY_TIME = 1000;
+    private final int DELAY_TIME = 1000;
     private ArrayList<Integer> sequence;
     private Button[] buttons;
     private int currentNum;
     private boolean isSequenceBeingDisplayed;
-    private final int DISPLAY_TIME = 1000;
-    private final int DELAY_TIME = 1000;
     private static int level;
     private ConstraintLayout cLayout;
 
