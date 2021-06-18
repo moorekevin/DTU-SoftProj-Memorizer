@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
     <RelativeLayout
         android:id="@+id/stasticsRelativeLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/gameName"
@@ -22,11 +22,72 @@
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="54sp" />
+            
+        <Button
+            android:id="@+id/leaderboardbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/toggle_style"
+            android:text="Leaderboard"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            />
+
+        <LinearLayout
+            android:id="@+id/relLayoutButtons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gameName"
+            android:layout_centerHorizontal="true">
+            <Button
+                android:id="@+id/sequencegamebutton"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/rounded_button"
+                android:fontFamily="@font/staatliches"
+                android:shadowColor="@color/black"
+                android:text="Sequence Game"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black"
+                android:textSize="10sp" />
+            <Button
+                android:id="@+id/numbergamebutton"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/rounded_button"
+                android:fontFamily="@font/staatliches"
+                android:shadowColor="@color/black"
+                android:text="Number Game"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/visualgamebutton"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/rounded_button"
+                android:fontFamily="@font/staatliches"
+                android:shadowColor="@color/black"
+                android:text="Visual Game"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black"
+                android:textSize="10sp" />
+        </LinearLayout>
+
 
         <TableLayout
+            android:id="@+id/tableLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/gameName"
+            android:layout_below="@+id/relLayoutButtons"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
             android:stretchColumns="1">

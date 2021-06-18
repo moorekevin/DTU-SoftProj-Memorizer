@@ -46,23 +46,20 @@ public class NumberGameOver extends AppCompatActivity {
 
         // For highscore
         mYourScoreValue = (TextView) findViewById(R.id.yourScoreValue);
-        mYourScoreValue.setText("" + (NumberGame.getLevel()-1));
+        mYourScoreValue.setText("" + (NumberGame.getLevel() - 1));
         mHighScoreValue = (TextView) findViewById(R.id.highScoreValue);
         mSubmitScore = (Button) findViewById(R.id.name_submit);
         mNameInput = (EditText) findViewById(R.id.typeName);
 
-        // Saving the score locally using current time and date for key
-        SharedPreferences prefs = this.getSharedPreferences(NumberGame.gameName, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-        editor.putInt(formatter.format(date), Integer.parseInt(mYourScoreValue.getText().toString()));
-        editor.commit();
-
-        //getting preferences
-        // SharedPreferences prefs2 = this.getSharedPreferences("test", Context.MODE_PRIVATE);
-        //int score = prefs2.getInt(formatter.format(date), 9999); //9999 is the default value
-        //System.out.println(score);
+        // Saving the score locally using current time and date for key (if score is greater than 0)
+        if (NumberGame.getLevel() > 1) {
+            SharedPreferences prefs = this.getSharedPreferences(NumberGame.gameName, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Date date = new Date();
+            editor.putInt(formatter.format(date), Integer.parseInt(mYourScoreValue.getText().toString()));
+            editor.commit();
+        }
 
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.gameOverRelativeLayout);
         rLayout.setBackgroundColor(Color.parseColor(NumberGame.gameColor));
@@ -105,8 +102,8 @@ public class NumberGameOver extends AppCompatActivity {
                     mNameInput.setEnabled(false);
                     mSubmitScore.setVisibility(View.GONE);
 
-                    InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                    inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(),0);
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
                 }
             }
         });
