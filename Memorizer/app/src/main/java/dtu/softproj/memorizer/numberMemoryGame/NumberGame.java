@@ -18,6 +18,8 @@ import dtu.softproj.memorizer.R;
 
 public class NumberGame extends AppCompatActivity {
     private static int level;
+    public static final String gameName = "Number Memory";
+    public static final String gameColor = "#88ff98";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

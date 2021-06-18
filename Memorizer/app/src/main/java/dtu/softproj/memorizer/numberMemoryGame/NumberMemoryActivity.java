@@ -41,7 +41,7 @@ public class NumberMemoryActivity extends AppCompatActivity {
         img.setImageResource(R.drawable.numbermemory_logo);
         // Setting the game name
         TextView gameName = (TextView) findViewById(R.id.gameName);
-        gameName.setText("Number Memory");
+        gameName.setText(NumberGame.gameName);
         // Setting the game description
         TextView gameDescription = (TextView) findViewById(R.id.gameDescription);
         gameDescription.setText("Memorize the longest sequence of numbers. \n " +

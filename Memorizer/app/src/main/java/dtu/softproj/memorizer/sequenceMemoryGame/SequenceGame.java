@@ -14,6 +14,7 @@ import java.util.Random;
 import dtu.softproj.memorizer.R;
 
 public class SequenceGame extends AppCompatActivity implements View.OnClickListener {
+    public static final String gameName = "Sequence Memory";
     private ArrayList<Integer> sequence;
     private Button[] buttons;
     private int currentNum;

@@ -18,6 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Statistics" />
 
         <activity android:name=".numberMemoryGame.NumberMemoryActivity"/>
         <activity android:name=".numberMemoryGame.NumberGameOver"

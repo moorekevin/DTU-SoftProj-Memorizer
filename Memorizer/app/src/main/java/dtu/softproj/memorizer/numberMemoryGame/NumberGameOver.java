@@ -1,8 +1,8 @@
 package dtu.softproj.memorizer.numberMemoryGame;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -19,8 +19,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import dtu.softproj.memorizer.MainActivity;
 import dtu.softproj.memorizer.R;
+import dtu.softproj.memorizer.Statistics;
 import dtu.softproj.memorizer.User;
 
 public class NumberGameOver extends AppCompatActivity {
@@ -38,6 +42,7 @@ public class NumberGameOver extends AppCompatActivity {
         mPlayAgain = (Button) findViewById(R.id.playAgainButton);
         mStatistics = (Button) findViewById(R.id.statisticsButton);
         homeButton = (ImageButton) findViewById(R.id.homeButton);
+        mStatistics = (Button) findViewById(R.id.statisticsButton);
 
         // For highscore
         mYourScoreValue = (TextView) findViewById(R.id.yourScoreValue);
@@ -46,8 +51,21 @@ public class NumberGameOver extends AppCompatActivity {
         mSubmitScore = (Button) findViewById(R.id.name_submit);
         mNameInput = (EditText) findViewById(R.id.typeName);
 
+        // Saving the score locally using current time and date for key
+        SharedPreferences prefs = this.getSharedPreferences(NumberGame.gameName, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        editor.putInt(formatter.format(date), Integer.parseInt(mYourScoreValue.getText().toString()));
+        editor.commit();
+
+        //getting preferences
+        // SharedPreferences prefs2 = this.getSharedPreferences("test", Context.MODE_PRIVATE);
+        //int score = prefs2.getInt(formatter.format(date), 9999); //9999 is the default value
+        //System.out.println(score);
+
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.gameOverRelativeLayout);
-        rLayout.setBackgroundColor(Color.parseColor("#88ff98"));
+        rLayout.setBackgroundColor(Color.parseColor(NumberGame.gameColor));
 
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +108,15 @@ public class NumberGameOver extends AppCompatActivity {
                     InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
                     inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(),0);
                 }
+            }
+        });
+
+        mStatistics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NumberGameOver.this, Statistics.class);
+                intent.putExtra("Game", NumberGame.gameName);
+                startActivity(intent);
             }
         });
 

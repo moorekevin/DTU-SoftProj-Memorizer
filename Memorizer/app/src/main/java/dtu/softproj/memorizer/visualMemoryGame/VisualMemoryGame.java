@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import dtu.softproj.memorizer.R;
 
 public class VisualMemoryGame extends AppCompatActivity {
+    public static final String gameName = "Visual Memory";
     private int level = 1;
     private int lives = 3;
     private int tempLives = 3;
