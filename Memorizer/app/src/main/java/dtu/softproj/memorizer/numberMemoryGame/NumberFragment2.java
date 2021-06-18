@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.app.Fragment;
@@ -55,13 +57,16 @@ public class NumberFragment2 extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Button submitButton = view.findViewById(R.id.number_submit);
-
+        EditText mEditText = (EditText) view.findViewById(R.id.number_input);
+        mEditText.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(mEditText, InputMethodManager.SHOW_IMPLICIT);
 
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText mEditText = (EditText) view.findViewById(R.id.number_input);
+
                 String input = mEditText.getText().toString();
                 if (input.equals("") || input == null) {
                     Context context = getActivity();
