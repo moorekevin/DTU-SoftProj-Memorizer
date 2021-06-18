@@ -10,9 +10,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -116,7 +114,7 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
     public void manageBlinkEffect(ConstraintLayout cLayout , String startColor, String endColor) {
         ObjectAnimator anim = ObjectAnimator.ofInt(cLayout , "backgroundColor",
                 Color.parseColor(startColor) , Color.parseColor(endColor));
-        anim.setDuration(500);
+        anim.setDuration(300);
         anim.setEvaluator(new ArgbEvaluator());
         anim.setRepeatMode(Animation.REVERSE);
         anim.setRepeatCount(1);
