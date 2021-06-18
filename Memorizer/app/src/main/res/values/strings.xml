@@ -4,7 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="level_not_found">Level: ?</string>
     <string name="lives_not_found">Lives: ?</string>
-    
+    <string name="score_not_found">Score: ?</string>
+    <string name="word_not_found">Word: ???</string>
     <dimen name="wrap_content">40dp</dimen>
     <dimen name="button_margin">3dp</dimen>
 </resources>

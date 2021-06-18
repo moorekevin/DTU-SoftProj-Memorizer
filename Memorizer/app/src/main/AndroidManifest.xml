@@ -53,6 +53,17 @@
         <activity
             android:name=".visualMemoryGame.VisualMemoryGame"
             android:screenOrientation="portrait" />
+        <activity
+
+            android:name=".verbalMemoryGame.VerbalMemoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".verbalMemoryGame.VerbalGameOver"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".verbalMemoryGame.VerbalMemoryGame"
+            android:screenOrientation="portrait" />
+
 
     </application>
 

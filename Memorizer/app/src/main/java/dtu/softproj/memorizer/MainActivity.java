@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import dtu.softproj.memorizer.numberMemoryGame.NumberMemoryActivity;
 import dtu.softproj.memorizer.sequenceMemoryGame.SequenceActivity;
+import dtu.softproj.memorizer.verbalMemoryGame.VerbalMemoryActivity;
 import dtu.softproj.memorizer.visualMemoryGame.VisualMemoryActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         openGameButton(R.id.sequence_button, SequenceActivity.class);
         openGameButton(R.id.numbermemory_button, NumberMemoryActivity.class);
+        openGameButton(R.id.verbalmemory_button, VerbalMemoryActivity.class);
         openGameButton(R.id.visualmemory_button, VisualMemoryActivity.class);
 
         mButton = findViewById(R.id.statistic_button);
