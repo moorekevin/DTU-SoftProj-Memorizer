@@ -41,7 +41,7 @@ public class Statistics extends AppCompatActivity {
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.stasticsRelativeLayout);
         switch(game) {
             case NumberGame.gameName:
-                rLayout.setBackgroundColor(Color.parseColor(NumberGame.gameColor));
+//                rLayout.setBackgroundColor(Color.parseColor(NumberGame.gameColor));
                 break;
 
             case SequenceGame.gameName:
