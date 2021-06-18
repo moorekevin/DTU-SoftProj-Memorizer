@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -38,7 +39,7 @@ public class Statistics extends AppCompatActivity {
         game = getIntent().getStringExtra("Game");
         mGameName.setText(game);
 
-        RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.stasticsRelativeLayout);
+        LinearLayout rLayout = (LinearLayout) findViewById(R.id.stasticsRelativeLayout);
         switch(game) {
             case NumberGame.gameName:
 //                rLayout.setBackgroundColor(Color.parseColor(NumberGame.gameColor));
