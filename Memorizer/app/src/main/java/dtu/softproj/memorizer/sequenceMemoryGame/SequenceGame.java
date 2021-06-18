@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,13 +31,13 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
     private int currentNum;
     private boolean isSequenceBeingDisplayed;
     private static int level;
-    private ConstraintLayout cLayout;
+    private LinearLayout rLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sequence_layout);
-        cLayout = (ConstraintLayout) findViewById(R.id.sequence_layout);
+        rLayout = (LinearLayout) findViewById(R.id.sequence_layout);
         level = 1;
         sequence = new ArrayList<Integer>();
 
@@ -111,8 +112,8 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
     }
     
     @SuppressLint("WrongConstant")
-    public void manageBlinkEffect(ConstraintLayout cLayout , String startColor, String endColor) {
-        ObjectAnimator anim = ObjectAnimator.ofInt(cLayout , "backgroundColor",
+    public void manageBlinkEffect(LinearLayout rLayout , String startColor, String endColor) {
+        ObjectAnimator anim = ObjectAnimator.ofInt(rLayout , "backgroundColor",
                 Color.parseColor(startColor) , Color.parseColor(endColor));
         anim.setDuration(300);
         anim.setEvaluator(new ArgbEvaluator());
@@ -132,7 +133,7 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
                     level = sequence.size();
                     levelTextView.setText("LEVEL: " + level);
                     currentNum = 0;
-                    manageBlinkEffect(cLayout , "#ff9494", "#94ff9B");
+                    manageBlinkEffect(rLayout , "#ff9494", "#94ff9B");
 //                    cLayout.setBackgroundColor(Color.parseColor("#ff9494"));
                     displaySequence();
                 }
