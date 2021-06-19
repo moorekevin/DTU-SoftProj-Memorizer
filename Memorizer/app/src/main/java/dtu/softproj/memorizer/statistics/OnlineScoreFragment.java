@@ -46,20 +46,17 @@ public class OnlineScoreFragment extends Fragment {
         Query mDatabaseOrdered = mUserDatabase.orderByChild("score").limitToLast(15);
 
         hasNotGottenData = true; // Variable needed so it doesnt update the database while the user is watching the leaderboard
-        mDatabaseOrdered.addValueEventListener(new ValueEventListener() {
+        ValueEventListener listener = mDatabaseOrdered.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot){
-                if (hasNotGottenData) {
-                    hasNotGottenData = false;
-                    int index = 2;
-                    for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                        if (childSnapshot.exists()) {
-                            User user = childSnapshot.getValue(User.class);
-                            user.setName(childSnapshot.getKey());
-                            createRows(user.getName(), user.getScore(), index);
-                        }
-                    }
 
+                int index = 2;
+                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                    if (childSnapshot.exists()) {
+                        User user = childSnapshot.getValue(User.class);
+                        user.setName(childSnapshot.getKey());
+                        createRows(user.getName(), user.getScore(), index);
+                    }
                 }
             }
             @Override
@@ -67,6 +64,7 @@ public class OnlineScoreFragment extends Fragment {
                 throw databaseError.toException();
             }
         });
+        mDatabaseOrdered.removeEventListener(listener);
     }
 
     private void createRows(String playerKey, int scoreKey, int index) {
