@@ -31,8 +31,8 @@ public class NumberGameOver extends AppCompatActivity {
     private Button mPlayAgain;
     private Button mStatistics;
     private Button mSubmitScore;
-    private ImageButton homeButton;
     private EditText mNameInput;
+    private ImageButton homeButton;
     private TextView mYourScoreValue, mHighScoreValue;
 
     @Override
@@ -52,7 +52,7 @@ public class NumberGameOver extends AppCompatActivity {
         mNameInput = (EditText) findViewById(R.id.typeName);
 
         // Saving the score locally using current time and date for key (if score is greater than 0)
-        if (NumberGame.getLevel() > 1) {
+        if (NumberGame.getLevel() >= 1) {
             SharedPreferences prefs = this.getSharedPreferences(NumberGame.GAME_NAME, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");

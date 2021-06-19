@@ -30,8 +30,12 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
     private Button[] buttons;
     private int currentNum;
     private boolean isSequenceBeingDisplayed;
-    private int level;
+    private static int level;
     private LinearLayout rLayout;
+
+    public static int getLevel() {
+        return level;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

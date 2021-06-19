@@ -1,5 +1,6 @@
 package dtu.softproj.memorizer.statistics;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -54,6 +55,8 @@ public class Statistics extends AppCompatActivity {
         createLocalScoreFragment();
 
         // Setting the toggle button between online and offline scores
+        TextView mOnlineOfflineText = (TextView) findViewById(R.id.onlineOfflineText);
+
         showingOfflineScores = true;
         mOnlineOfflineToggle = (ImageButton) findViewById(R.id.onlineOfflineToggle);
         mOnlineOfflineToggle.setOnClickListener(new View.OnClickListener() {
@@ -62,9 +65,17 @@ public class Statistics extends AppCompatActivity {
                 if (showingOfflineScores) {
                     createOnlineScoreFragment();
                     showingOfflineScores = false;
+                    mOnlineOfflineToggle.setBackgroundResource(R.drawable.online_scoretable_icon);
+                    mOnlineOfflineToggle.setImageResource(R.drawable.online_scoretable_icon);
+
+                    mOnlineOfflineText.setText("SHOWING ONLINE PLAYER SCORES");
                 } else {
                     showingOfflineScores = true;
                     createLocalScoreFragment();
+                    mOnlineOfflineToggle.setBackgroundResource(R.drawable.offline_scoretable_icon);
+                    mOnlineOfflineToggle.setImageResource(R.drawable.offline_scoretable_icon);
+
+                    mOnlineOfflineText.setText("SHOWING YOUR PERSONAL SCORES");
                 }
             }
         });

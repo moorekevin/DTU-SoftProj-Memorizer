@@ -23,7 +23,7 @@ public class VerbalMemoryGame extends AppCompatActivity {
     private final double PROBABILITY_COEFFICIENT = 0.638;
     private final double PROBABILITY_EXPONENT = -0.613;
     private int lives = 3;
-    private int score = 0;
+    private static int level = 0;
     private ArrayList<String> dictionary = new ArrayList<>();
     private ArrayList<String> wordsSeen = new ArrayList<>();
     private TextView tvWord;
@@ -49,7 +49,7 @@ public class VerbalMemoryGame extends AppCompatActivity {
 
     public void newRound() {
         tvLives.setText("Lives: " + lives);
-        tvScore.setText("Score: " + score);
+        tvScore.setText("Score: " + level);
 
         double probabilityOfNewWord = probabilityOfNewWord();
         double number = Math.random();
@@ -72,7 +72,7 @@ public class VerbalMemoryGame extends AppCompatActivity {
 
     public void roundOver(boolean roundWon) {
         if (roundWon) {
-            score++;
+            level++;
             newRound();
         } else {
             lives--;
@@ -81,7 +81,7 @@ public class VerbalMemoryGame extends AppCompatActivity {
             } else {
                 finish();
                 Intent intent = new Intent(VerbalMemoryGame.this, VerbalGameOver.class);
-                intent.putExtra("score", score);
+                intent.putExtra("score", level);
                 startActivity(intent);
             }
         }
@@ -121,5 +121,9 @@ public class VerbalMemoryGame extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static int getLevel() {
+        return level;
     }
 }
