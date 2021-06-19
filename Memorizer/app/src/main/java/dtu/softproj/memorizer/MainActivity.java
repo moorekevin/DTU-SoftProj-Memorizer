@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import dtu.softproj.memorizer.numberMemoryGame.NumberMemoryActivity;
 import dtu.softproj.memorizer.sequenceMemoryGame.SequenceActivity;
+import dtu.softproj.memorizer.statistics.Statistics;
 import dtu.softproj.memorizer.verbalMemoryGame.VerbalMemoryActivity;
 import dtu.softproj.memorizer.visualMemoryGame.VisualMemoryActivity;
 

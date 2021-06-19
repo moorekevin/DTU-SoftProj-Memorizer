@@ -24,7 +24,7 @@ import java.util.Date;
 
 import dtu.softproj.memorizer.MainActivity;
 import dtu.softproj.memorizer.R;
-import dtu.softproj.memorizer.Statistics;
+import dtu.softproj.memorizer.statistics.Statistics;
 import dtu.softproj.memorizer.User;
 
 public class NumberGameOver extends AppCompatActivity {
@@ -95,8 +95,8 @@ public class NumberGameOver extends AppCompatActivity {
                     User user = new User(username, Integer.parseInt(mYourScoreValue.getText().toString()));
 
                     DatabaseReference mUserDatabase = FirebaseDatabase.getInstance("https://dtu-memorizer-default-rtdb.europe-west1.firebasedatabase.app/")
-                            .getReference("users/numberGame");
-                    mUserDatabase.child(user.getName()).setValue(user.getScore());
+                            .getReference("users/" + NumberGame.GAME_NAME);
+                    mUserDatabase.child(user.getName()).child("score").setValue(user.getScore());
 
                     mNameInput.setText("SCORE SAVED!");
                     mNameInput.setEnabled(false);

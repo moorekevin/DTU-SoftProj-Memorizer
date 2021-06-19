@@ -50,7 +50,7 @@ public class NumberMemoryActivity extends AppCompatActivity {
         TextView allTimeScore = (TextView) findViewById(R.id.gameHighScoreValue);
 
         mUserDatabase = FirebaseDatabase.getInstance("https://dtu-memorizer-default-rtdb.europe-west1.firebasedatabase.app/")
-                .getReference("users/numberGame");
+                .getReference("users/" + NumberGame.GAME_NAME);
         // Finding the player with the highest score in game
         Query mDatabaseHighestPlayer = mUserDatabase.orderByChild("score").limitToLast(1);
         mDatabaseHighestPlayer.addValueEventListener(new ValueEventListener() {

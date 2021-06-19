@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Statistics"
+            android:name=".statistics.Statistics"
             android:screenOrientation="portrait" />
 
         <activity
