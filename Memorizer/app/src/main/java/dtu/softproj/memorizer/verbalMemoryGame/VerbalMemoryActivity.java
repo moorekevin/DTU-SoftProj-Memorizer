@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,8 +24,8 @@ public class VerbalMemoryActivity extends AppCompatActivity {
         mPlayButton = findViewById(R.id.playbutton);
 
         // Setting the background color
-        RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.playRelativeLayout);
-        rLayout.setBackgroundColor(Color.parseColor("#e088ff"));
+        LinearLayout layout = (LinearLayout) findViewById(R.id.playLayout);
+        layout.setBackgroundColor(Color.parseColor("#e088ff"));
         // Setting the logo
         ImageView img = (ImageView) findViewById(R.id.imageView);
         img.setImageResource(R.drawable.verbalmemory_logo);

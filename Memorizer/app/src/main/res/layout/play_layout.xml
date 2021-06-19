@@ -1,51 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/playLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
-    <RelativeLayout
-        android:id="@+id/playRelativeLayout"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFFFFF">
+        android:layout_height="0dp"
+        android:layout_weight="0.05">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15"
+        android:orientation="horizontal"
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="15dp"/>
+            android:layout_centerHorizontal="true" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:gravity="center">
         <TextView
             android:id="@+id/gameName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageView"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
             android:fontFamily="@font/staatliches"
             android:letterSpacing="-0.03"
             android:text="Game Name"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="64sp" />
-
+            android:textSize="60sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.12"
+        android:gravity="center">
         <TextView
             android:id="@+id/gameDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/gameName"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
             android:fontFamily="@font/staatliches"
             android:text="This text should describe the game."
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.08"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/gameHighScore"
@@ -53,42 +82,51 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/gameDescription"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
             android:fontFamily="@font/staatliches"
             android:text="All Time Highscore: "
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="40sp" />
-
-        <Button
-            android:id="@+id/playbutton"
-            android:layout_width="230dp"
-            android:layout_height="78dp"
-            android:layout_below="@+id/gameHighScoreValue"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/staatliches"
-            android:shadowColor="@color/black"
-            android:text="PLAY"
-            android:textColor="@android:color/black"
-            android:textSize="40sp"
-            android:background="@drawable/rounded_button"/>
-
+            android:textSize="30sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.07"
+        android:gravity="center">
         <TextView
             android:id="@+id/gameHighScoreValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/gameHighScore"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="15dp"
             android:fontFamily="@font/staatliches"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="20sp"
             android:text="User with xxx points" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15"
+        android:gravity="center">
+        <Button
+            android:id="@+id/playbutton"
+            android:layout_width="230dp"
+            android:layout_height="78dp"
+            android:layout_below="@+id/gameHighScoreValue"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/staatliches"
+            android:shadowColor="@color/black"
+            android:text="PLAY"
+            android:textColor="@android:color/black"
+            android:textSize="40sp"
+            android:background="@drawable/rounded_button"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1">
+    </LinearLayout>
 
-    </RelativeLayout>
-</ScrollView>
+</LinearLayout>

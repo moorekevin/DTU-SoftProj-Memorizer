@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,8 +24,8 @@ public class VisualMemoryActivity extends AppCompatActivity {
         mPlayButton = findViewById(R.id.playbutton);
 
         // Setting the background color
-        RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.playRelativeLayout);
-        rLayout.setBackgroundColor(Color.parseColor("#88e3ff"));
+        LinearLayout layout = (LinearLayout) findViewById(R.id.playLayout);
+        layout.setBackgroundColor(Color.parseColor("#88e3ff"));
         // Setting the logo
         ImageView img = (ImageView) findViewById(R.id.imageView);
         img.setImageResource(R.drawable.visualmemory_logo);
