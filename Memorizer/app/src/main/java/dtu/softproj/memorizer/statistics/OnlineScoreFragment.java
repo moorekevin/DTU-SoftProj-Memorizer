@@ -63,11 +63,11 @@ public class OnlineScoreFragment extends Fragment {
     }
 
     private void createRows(String playerKey, int scoreKey, int index) {
-        TableRow tr = new TableRow(getContext());
+        TableRow tr = new TableRow(getActivity());
         TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
         tr.setLayoutParams(lp);
 
-        TextView date = new TextView(getContext());
+        TextView date = new TextView(getActivity());
         date.setPadding(3, 3, 3, 3);
         date.setText("" + playerKey);
         date.setTextColor(Color.BLACK);
