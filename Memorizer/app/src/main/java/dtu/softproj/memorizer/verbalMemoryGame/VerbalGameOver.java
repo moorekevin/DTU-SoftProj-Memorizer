@@ -28,6 +28,7 @@ public class VerbalGameOver extends AppCompatActivity {
         mPlayAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 Intent playAgainIntent = new Intent(VerbalGameOver.this, VerbalMemoryGame.class);
                 startActivity(playAgainIntent);
             }
@@ -37,7 +38,7 @@ public class VerbalGameOver extends AppCompatActivity {
         homeButton = (ImageButton) findViewById(R.id.homeButton);
 
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.gameOverRelativeLayout);
-        rLayout.setBackgroundColor(Color.parseColor("#88e3ff"));
+        rLayout.setBackgroundColor(Color.parseColor("#e088ff"));
 
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override

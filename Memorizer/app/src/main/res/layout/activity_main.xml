@@ -44,8 +44,9 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/numbermemory_icon"
             android:src="@drawable/numbermemory_icon" />
+
         <ImageButton
-            android:id="@+id/verbalmemory_button"
+            android:id="@+id/visualmemory_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/numbermemory_button"
@@ -54,20 +55,19 @@
             android:src="@drawable/visualmemory_icon" />
 
         <ImageButton
-            android:id="@+id/visualmemory_button"
+            android:id="@+id/verbalmemory_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/verbalmemory_button"
+            android:layout_below="@+id/visualmemory_button"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/visualmemory_icon"
-            android:src="@drawable/visualmemory_icon" />
-
+            android:background="@drawable/verbalmemory_icon"
+            android:src="@drawable/verbalmemory_icon" />
 
         <ImageButton
             android:id="@+id/comingsoon_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/visualmemory_button"
+            android:layout_below="@+id/verbalmemory_button"
             android:layout_centerHorizontal="true"
             android:background="@drawable/comingsoon_icon"
             android:src="@drawable/comingsoon_icon" />
