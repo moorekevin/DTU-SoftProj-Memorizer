@@ -73,7 +73,7 @@ public class OnlineScoreFragment extends Fragment {
         date.setTextColor(Color.BLACK);
         date.setTextSize(20);
 
-        TextView score = new TextView(getContext());
+        TextView score = new TextView(getActivity());
         score.setGravity(Gravity.RIGHT);
         score.setText("" + scoreKey);
         score.setTextColor(Color.BLACK);
