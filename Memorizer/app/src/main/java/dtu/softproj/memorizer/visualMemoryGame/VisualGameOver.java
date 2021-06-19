@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,7 +33,13 @@ public class VisualGameOver extends AppCompatActivity {
             }
         });
 
-//        mStatistics = (Button) findViewById(R.id.statisticsButton);
+        Intent mIntent = getIntent();
+        int score = mIntent.getIntExtra("score", 0);
+
+        TextView mYourScoreValue = (TextView) findViewById(R.id.yourScoreValue);
+        mYourScoreValue.setText("" + score);
+
+//      mStatistics = (Button) findViewById(R.id.statisticsButton);
         homeButton = (ImageButton) findViewById(R.id.homeButton);
 
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.gameOverRelativeLayout);

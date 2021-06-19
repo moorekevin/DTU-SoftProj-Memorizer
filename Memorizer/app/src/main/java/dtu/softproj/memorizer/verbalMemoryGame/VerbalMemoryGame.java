@@ -81,6 +81,7 @@ public class VerbalMemoryGame extends AppCompatActivity {
             } else {
                 finish();
                 Intent intent = new Intent(VerbalMemoryGame.this, VerbalGameOver.class);
+                intent.putExtra("score", score);
                 startActivity(intent);
             }
         }
@@ -108,6 +109,7 @@ public class VerbalMemoryGame extends AppCompatActivity {
     }
 
     public void defDictionary() {
+        //text file found at: https://github.com/hugsy/stuff/blob/master/random-word/english-nouns.txt
         try {
             InputStream inputStream = getResources().openRawResource(R.raw.dictionary);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));

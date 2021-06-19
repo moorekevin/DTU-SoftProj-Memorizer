@@ -29,9 +29,12 @@ public class SequenceGameOver extends AppCompatActivity {
         mPlayAgain = (Button) findViewById(R.id.playAgainButton);
 //        mStatistics = (Button) findViewById(R.id.statisticsButton);
         homeButton = (ImageButton) findViewById(R.id.homeButton);
-        mYourScoreValue = (TextView) findViewById(R.id.yourScoreValue);
 
-        mYourScoreValue.setText("" + (SequenceGame.getLevel()-1));
+        Intent mIntent = getIntent();
+        int score = mIntent.getIntExtra("score", 0);
+        
+        mYourScoreValue = (TextView) findViewById(R.id.yourScoreValue);
+        mYourScoreValue.setText("" + score);
 
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.gameOverRelativeLayout);
         rLayout.setBackgroundColor(Color.parseColor("#ff9494"));

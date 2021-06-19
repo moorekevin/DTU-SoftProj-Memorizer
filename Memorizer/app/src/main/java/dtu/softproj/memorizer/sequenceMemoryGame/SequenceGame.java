@@ -30,7 +30,7 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
     private Button[] buttons;
     private int currentNum;
     private boolean isSequenceBeingDisplayed;
-    private static int level;
+    private int level;
     private LinearLayout rLayout;
 
     @Override
@@ -77,10 +77,6 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
             newNum = rand.nextInt(9);
         }
         sequence.add(newNum);
-    }
-
-    public static int getLevel() {
-        return level;
     }
 
     public void displaySequence() {
@@ -141,6 +137,7 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
             } else {
                 finish();
                 Intent intent = new Intent(SequenceGame.this, SequenceGameOver.class);
+                intent.putExtra("score", level-1);
                 startActivity(intent);
             }
         }
