@@ -52,7 +52,7 @@ public class NumberGameOver extends AppCompatActivity {
         mNameInput = (EditText) findViewById(R.id.typeName);
 
         // Saving the score locally using current time and date for key (if score is greater than 0)
-        if (NumberGame.getLevel() >= 1) {
+        if (NumberGame.getLevel() > 1) {
             SharedPreferences prefs = this.getSharedPreferences(NumberGame.GAME_NAME, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -111,7 +111,7 @@ public class NumberGameOver extends AppCompatActivity {
         mStatistics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NumberGameOver.this, Statistics.class);
+                Intent intent = new Intent(getApplicationContext(), Statistics.class);
                 intent.putExtra("Game", NumberGame.GAME_NAME);
                 startActivity(intent);
             }

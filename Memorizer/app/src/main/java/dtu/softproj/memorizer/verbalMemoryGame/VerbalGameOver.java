@@ -61,7 +61,6 @@ public class VerbalGameOver extends AppCompatActivity {
         TextView mYourScoreValue = (TextView) findViewById(R.id.yourScoreValue);
         mYourScoreValue.setText("" + score);
 
-//        mStatistics = (Button) findViewById(R.id.statisticsButton);
         homeButton = (ImageButton) findViewById(R.id.homeButton);
 
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.gameOverRelativeLayout);
