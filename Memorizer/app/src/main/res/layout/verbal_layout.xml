@@ -21,6 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:fontFamily="@font/staatliches"
                 android:text="@string/lives_not_found"
                 android:textSize="28sp" />
         </LinearLayout>
@@ -35,6 +36,7 @@
                 android:id="@+id/tvVerbalScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/staatliches"
                 android:textColor="@color/black"
                 android:text="@string/score_not_found"
                 android:textSize="28sp" />
@@ -54,6 +56,7 @@
             <TextView
                 android:id="@+id/tvWord"
                 android:layout_width="wrap_content"
+                android:fontFamily="@font/staatliches"
                 android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:text="@string/word_not_found"
@@ -82,6 +85,7 @@
                 android:layout_margin="25dp"
                 android:background="@color/white"
                 android:onClick="seenOnClick"
+                android:fontFamily="@font/staatliches"
                 android:text="SEEN"
                 android:textSize="20sp"
                 android:textColor="@color/black" />
@@ -92,6 +96,7 @@
                 android:layout_margin="25dp"
                 android:background="@color/white"
                 android:onClick="newOnClick"
+                android:fontFamily="@font/staatliches"
                 android:text="NEW"
                 android:textSize="20sp"
                 android:textColor="@color/black" />

@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.view.View;
 import android.content.Intent;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -33,8 +34,8 @@ public class NumberMemoryActivity extends AppCompatActivity {
         mPlayButton = findViewById(R.id.playbutton);
 
         // Setting the background color
-        RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.playRelativeLayout);
-        rLayout.setBackgroundColor(Color.parseColor("#88ff98"));
+        LinearLayout layout = (LinearLayout ) findViewById(R.id.playLayout);
+        layout.setBackgroundColor(Color.parseColor("#88ff98"));
         // Setting the logo
         ImageView img = (ImageView) findViewById(R.id.imageView);
         img.setImageResource(R.drawable.numbermemory_logo);
