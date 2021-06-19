@@ -49,7 +49,8 @@ public class OnlineScoreFragment extends Fragment {
         mDatabaseOrdered.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot){
-                if (false) {
+                if (hasNotGottenData) {
+                    hasNotGottenData = false;
                     int index = 2;
                     for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                         if (childSnapshot.exists()) {
@@ -58,6 +59,8 @@ public class OnlineScoreFragment extends Fragment {
                             createRows(user.getName(), user.getScore(), index);
                         }
                     }
+                } else {
+                    System.out.println("Test test test");
                 }
             }
             @Override
