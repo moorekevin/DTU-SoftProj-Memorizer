@@ -46,6 +46,7 @@ public class OnlineScoreFragment extends Fragment {
         mDatabaseOrdered.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot){
+                tl.removeViews(2,tl.getChildCount());
                 int index = 2;
                 for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
                     if (childSnapshot.exists()) {
