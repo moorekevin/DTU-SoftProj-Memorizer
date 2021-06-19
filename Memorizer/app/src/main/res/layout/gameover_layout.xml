@@ -4,12 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
+
     <RelativeLayout
         android:id="@+id/gameOverRelativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/gameOverTitle"
@@ -20,79 +19,80 @@
             android:layout_marginTop="55dp"
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/bauhs93"
-            android:text="Game \n Over"
+            android:text="Game\nOver"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="80sp" />
 
-        <TextView
-            android:id="@+id/yourScore"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linLayoutYourScore"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/gameOverTitle"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="0dp"
-            android:fontFamily="@font/staatliches"
-            android:text="Your Score:"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="30sp" />
+            android:gravity="center">
 
-        <TextView
-            android:id="@+id/highscore"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/yourScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/staatliches"
+                android:text="Your Score:"
+                android:textColor="#000000"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/yourScoreValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/staatliches"
+                android:text="SCORE"
+                android:textColor="@android:color/black"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linLayoutHighscore"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/yourScore"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/staatliches"
-            android:text="Highscore:"
-            android:textColor="#000000"
-            android:textSize="30sp" />
+            android:layout_below="@+id/linLayoutYourScore"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/highscore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/staatliches"
+                android:text="Highscore:"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/highScoreValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/staatliches"
+                android:text="SCORE"
+                android:textColor="@android:color/black"
+                android:textSize="30sp" />
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/homeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:background="@drawable/home_button"
             android:src="@drawable/home_button"
             app:srcCompat="@drawable/home_button" />
-
-        <Button
-            android:id="@+id/statisticsButton"
-            android:layout_width="230dp"
-            android:layout_height="78dp"
-            android:layout_below="@+id/name_submit"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="7.5dp"
-            android:fontFamily="@font/staatliches"
-            android:text="STATISTICS"
-            android:textColor="@android:color/black"
-            android:textSize="40sp"
-            android:background="@drawable/rounded_button" />
-
-        <Button
-            android:id="@+id/playAgainButton"
-            android:layout_width="230dp"
-            android:layout_height="78dp"
-            android:layout_below="@+id/statisticsButton"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="7.5dp"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/staatliches"
-            android:text="PLAY AGAIN"
-            android:textColor="@android:color/black"
-            android:textSize="40sp"
-            android:background="@drawable/rounded_button"/>
 
         <EditText
             android:id="@+id/typeName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/highscore"
+            android:layout_below="@+id/linLayoutHighscore"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/staatliches"
@@ -101,7 +101,7 @@
             android:shadowColor="@color/black"
             android:textAlignment="center"
             android:textColor="@android:color/black"
-            android:textColorHint="#73AE7B"
+            android:textColorHint="#7D000000"
             android:textSize="25sp" />
 
         <Button
@@ -112,34 +112,40 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="25dp"
+            android:background="@drawable/rounded_button"
             android:fontFamily="@font/staatliches"
             android:shadowColor="@color/black"
             android:text="SUBMIT"
             android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:background="@drawable/rounded_button"/>
+            android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/yourScoreValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+        <Button
+            android:id="@+id/statisticsButton"
+            android:layout_width="230dp"
+            android:layout_height="78dp"
+            android:layout_below="@+id/name_submit"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="7.5dp"
+            android:background="@drawable/rounded_button"
             android:fontFamily="@font/staatliches"
-            android:layout_alignTop="@+id/yourScore"
-            android:layout_toRightOf="@+id/yourScore"
-            android:text="SCORE"
-            android:textSize="30sp"/>
+            android:text="STATISTICS"
+            android:textColor="@android:color/black"
+            android:textSize="40sp" />
 
-        <TextView
-            android:id="@+id/highScoreValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+        <Button
+            android:id="@+id/playAgainButton"
+            android:layout_width="230dp"
+            android:layout_height="78dp"
+            android:layout_below="@+id/statisticsButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="7.5dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/rounded_button"
             android:fontFamily="@font/staatliches"
-            android:layout_alignTop="@+id/highscore"
-            android:layout_toRightOf="@+id/highscore"
-            android:text="SCORE"
-            android:textSize="30sp"/>
+            android:text="PLAY AGAIN"
+            android:textColor="@android:color/black"
+            android:textSize="40sp" />
 
 
     </RelativeLayout>

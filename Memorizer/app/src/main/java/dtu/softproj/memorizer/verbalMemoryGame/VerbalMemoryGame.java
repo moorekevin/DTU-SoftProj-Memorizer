@@ -1,5 +1,6 @@
 package dtu.softproj.memorizer.verbalMemoryGame;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -14,6 +19,9 @@ import dtu.softproj.memorizer.R;
 
 public class VerbalMemoryGame extends AppCompatActivity {
     public static final String GAME_NAME = "Verbal Memory";
+    private final double PROBABILITY_CONSTANT = 0.262;
+    private final double PROBABILITY_COEFFICIENT = 0.638;
+    private final double PROBABILITY_EXPONENT = -0.613;
     private int lives = 3;
     private int score = 0;
     private ArrayList<String> dictionary = new ArrayList<>();
@@ -34,22 +42,19 @@ public class VerbalMemoryGame extends AppCompatActivity {
         defDictionary();
         newRound();
     }
+
+    public double probabilityOfNewWord() {
+        return PROBABILITY_CONSTANT + PROBABILITY_COEFFICIENT * Math.pow(wordsSeen.size(), PROBABILITY_EXPONENT);
+    }
+
     public void newRound() {
         tvLives.setText("Lives: " + lives);
         tvScore.setText("Score: " + score);
 
-        double probabilityOfNewWord = 0.3;
+        double probabilityOfNewWord = probabilityOfNewWord();
         double number = Math.random();
-        if (wordsSeen.size() < 5) {
-            if (wordsSeen.isEmpty()) {
-                number = 0;
-            } else {
-                number /= 2.5;
-            }
-        }
         if (number < probabilityOfNewWord) {
             if (dictionary.isEmpty()) {
-                //TODO remove this when having a proper dictionary that can't be empty
                 finish();
                 Intent intent = new Intent(VerbalMemoryGame.this, VerbalMemoryActivity.class);
                 startActivity(intent);
@@ -66,20 +71,22 @@ public class VerbalMemoryGame extends AppCompatActivity {
     }
 
     public void roundOver(boolean roundWon) {
-        if (roundWon){
+        if (roundWon) {
             score++;
             newRound();
         } else {
             lives--;
-            if (lives > 0){
+            if (lives > 0) {
                 newRound();
             } else {
                 finish();
                 Intent intent = new Intent(VerbalMemoryGame.this, VerbalGameOver.class);
+                intent.putExtra("score", score);
                 startActivity(intent);
             }
         }
     }
+
     public void seenOnClick(View view) {
         boolean isNew = !wordsSeen.contains(tvWord.getText().toString());
         if (!isNew) {
@@ -102,14 +109,17 @@ public class VerbalMemoryGame extends AppCompatActivity {
     }
 
     public void defDictionary() {
-//        add("table");
-//        add("window");
-//        add("chair");
-//        add("floor");
-//        add("wall");
-        dictionary.addAll(Arrays.asList("Actor", "Gold", "Painting", "Advertisement", "Grass", "Parrot", "Afternoon", "Greece", "Pencil", "Airport", "Guitar", "Piano", "Ambulance", "Hair", "Pillow", "Animal", "Hamburger", "Pizza", "Answer", "Helicopter", "Planet", "Apple", "Helmet", "Plastic", "Army", "Holiday", "Portugal", "Australia", "Honey", "Potato", "Balloon", "Horse", "Queen", "Banana", "Hospital", "Quill", "Battery", "House", "Rain", "Beach", "Hydrogen", "Rainbow", "Beard", "Ice", "Raincoat", "Bed", "Insect", "Refrigerator", "Belgium", "Insurance", "Restaurant", "Boy", "Iron", "River", "Branch", "Island", "Rocket", "Breakfast", "Jackal", "Room", "Brother", "Jelly", "Rose", "Camera", "Jewellery", "Russia", "Candle", "Jordan", "Sandwich", "Car", "Juice", "School", "Caravan", "Kangaroo", "Scooter", "Carpet", "King", "Shampoo", "Cartoon", "Kitchen", "Shoe", "China", "Kite", "Soccer", "Church", "Knife", "Spoon", "Crayon", "Lamp", "Stone", "Crowd", "Lawyer", "Sugar", "Daughter", "Leather", "Sweden", "Death", "Library", "Teacher", "Denmark", "Lighter", "Telephone", "Diamond", "Lion", "Television", "Dinner", "Lizard", "Tent", "Disease", "Lock", "Thailand", "Doctor", "London", "Tomato", "Dog", "Lunch", "Toothbrush", "Dream", "Machine", "Traffic", "Dress", "Magazine", "Train", "Easter", "Magician", "Truck", "Egg", "Manchester", "Uganda", "Eggplant", "Market", "Umbrella", "Egypt", "Match", "Van", "Elephant", "Microphone", "Vase", "Energy", "Monkey", "Vegetable", "Engine", "Morning", "Vulture", "England", "Motorcycle", "Wall", "Evening", "Nail", "Whale", "Eye", "Napkin", "Window", "Family", "Needle", "Wire", "Finland", "Nest", "Xylophone", "Fish", "Nigeria", "Yacht", "Flag", "Night", "Yak", "Flower", "Notebook", "Zebra", "Football", "Ocean", "Zoo", "Forest", "Oil", "Garden", "Fountain", "Orange", "Gas", "France", "Oxygen", "Girl", "Furniture", "Oyster", "Glass", "Garage", "Ghost"));
+        //text file found at: https://github.com/hugsy/stuff/blob/master/random-word/english-nouns.txt
+        try {
+            InputStream inputStream = getResources().openRawResource(R.raw.dictionary);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            String line = bufferedReader.readLine();
+            while (line != null && !line.equals("")) {
+                dictionary.add(line);
+                line = bufferedReader.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-//    public void add(String word) {
-//        dictionary.add(word);
-//    }
 }

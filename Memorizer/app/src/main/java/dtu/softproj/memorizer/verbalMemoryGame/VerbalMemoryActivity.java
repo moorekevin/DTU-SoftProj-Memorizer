@@ -24,10 +24,10 @@ public class VerbalMemoryActivity extends AppCompatActivity {
 
         // Setting the background color
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.playRelativeLayout);
-        rLayout.setBackgroundColor(Color.parseColor("#88e3ff"));
+        rLayout.setBackgroundColor(Color.parseColor("#e088ff"));
         // Setting the logo
         ImageView img = (ImageView) findViewById(R.id.imageView);
-        img.setImageResource(R.drawable.visualmemory_logo);
+        img.setImageResource(R.drawable.verbalmemory_logo);
         // Setting the game name
         TextView gameName = (TextView) findViewById(R.id.gameName);
         gameName.setText("Verbal Memory");
