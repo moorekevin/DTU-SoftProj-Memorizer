@@ -48,17 +48,18 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
             String butName = "sequence_tile" + (i + 1);
             int resID = getResources().getIdentifier(butName, "id", getPackageName());
             buttons[i] = (Button) findViewById(resID);
-            buttons[i].getBackground().setLevel(0);
             buttons[i].setOnClickListener(this);
 
             // Display as white while pressed down
             buttons[i].setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View view, MotionEvent event) {
-                    if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                        view.getBackground().setLevel(1);
-                    } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                        view.getBackground().setLevel(0);
+                    if (!isSequenceBeingDisplayed) {
+                        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                            view.getBackground().setLevel(1);
+                        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                            view.getBackground().setLevel(0);
+                        }
                     }
                     return false;
                 }
@@ -110,11 +111,11 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
             }, DISPLAY_TIME * (i + 1) + DELAY_TIME);
         }
     }
-    
+
     @SuppressLint("WrongConstant")
-    public void manageBlinkEffect(LinearLayout rLayout , String startColor, String endColor) {
-        ObjectAnimator anim = ObjectAnimator.ofInt(rLayout , "backgroundColor",
-                Color.parseColor(startColor) , Color.parseColor(endColor));
+    public void manageBlinkEffect(LinearLayout rLayout, String startColor, String endColor) {
+        ObjectAnimator anim = ObjectAnimator.ofInt(rLayout, "backgroundColor",
+                Color.parseColor(startColor), Color.parseColor(endColor));
         anim.setDuration(300);
         anim.setEvaluator(new ArgbEvaluator());
         anim.setRepeatMode(Animation.REVERSE);
@@ -133,7 +134,7 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
                     level = sequence.size();
                     levelTextView.setText("LEVEL: " + level);
                     currentNum = 0;
-                    manageBlinkEffect(rLayout , "#ff9494", "#94ff9B");
+                    manageBlinkEffect(rLayout, "#ff9494", "#94ff9B");
 //                    cLayout.setBackgroundColor(Color.parseColor("#ff9494"));
                     displaySequence();
                 }

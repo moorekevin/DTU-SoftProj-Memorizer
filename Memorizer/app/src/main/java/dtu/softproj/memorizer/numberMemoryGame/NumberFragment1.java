@@ -49,11 +49,11 @@ public class NumberFragment1 extends Fragment {
                 Color.rgb(0, 180, 0), android.graphics.PorterDuff.Mode.SRC_IN);
         mProgressBar.setProgress(progress);
 
-        mCountDownTimer = new CountDownTimer(timerSeconds * 1000, 50) {
+        mCountDownTimer = new CountDownTimer(timerSeconds * 1000, 30) {
             @Override
             public void onTick(long millisUntilFinished) {
                 progress++;
-                mProgressBar.setProgress((int) progress * 5 / (timerSeconds));
+                mProgressBar.setProgress((int) progress * 3 / (timerSeconds));
             }
 
             @Override

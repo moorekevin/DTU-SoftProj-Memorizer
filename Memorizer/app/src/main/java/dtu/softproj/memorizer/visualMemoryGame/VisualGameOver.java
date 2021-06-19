@@ -26,6 +26,7 @@ public class VisualGameOver extends AppCompatActivity {
         mPlayAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 Intent playAgainIntent = new Intent(VisualGameOver.this, VisualMemoryGame.class);
                 startActivity(playAgainIntent);
             }

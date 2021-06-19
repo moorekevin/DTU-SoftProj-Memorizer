@@ -30,7 +30,6 @@ public class VisualMemoryGame extends AppCompatActivity {
     private Button[][] buttons = new Button[MAX_GRID_SIZE][MAX_GRID_SIZE];
     private boolean[][] grid;
     private int numberOfTrueTilesPressed;
-    private boolean isTilesDisplayed;
     private CountDownTimer mCountDownTimer;
     private LinearLayout rLayout;
 
@@ -41,8 +40,8 @@ public class VisualMemoryGame extends AppCompatActivity {
         rLayout = (LinearLayout) findViewById(R.id.visual_layout);
         buttonViewsToArray();
 
-        for (int i = 0; i < MAX_GRID_SIZE; i++) {
-            for (int j = 0; j < MAX_GRID_SIZE; j++) {
+        for (int i = 0; i < buttons.length; i++) {
+            for (int j = 0; j < buttons[i].length; j++) {
                 buttons[i][j].setEnabled(false);
             }
         }
@@ -116,7 +115,7 @@ public class VisualMemoryGame extends AppCompatActivity {
             @Override
             public void run() {
                 for (int i = 0; i < grid.length; i++) {
-                    for (int j = 0; j < grid.length; j++) {
+                    for (int j = 0; j < grid[i].length; j++) {
                         if (grid[i][j]) {
                             buttons[i][j].getBackground().setLevel(1);
                         }
@@ -125,26 +124,24 @@ public class VisualMemoryGame extends AppCompatActivity {
             }
         }, START_DELAY);
 
-        //TODO make it so you can't press buttons while showing the correct ones
         //TODO Consider give longer time based on amount of squares/grid size?
         //TODO problem if finishing level before 'un-showing' the correct tiles
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 for (int i = 0; i < grid.length; i++) {
-                    for (int j = 0; j < grid.length; j++) {
+                    for (int j = 0; j < grid[i].length; j++) {
                         buttons[i][j].getBackground().setLevel(0);
                         buttons[i][j].setEnabled(true);
                     }
                 }
-                isTilesDisplayed = false;
             }
         }, DISPLAY_TIME + END_DELAY);
     }
 
     public void defButtonOnClick() {
         for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid.length; j++) {
+            for (int j = 0; j < grid[i].length; j++) {
                 defOnClick(buttons[i][j], grid[i][j]);
             }
         }
@@ -176,17 +173,25 @@ public class VisualMemoryGame extends AppCompatActivity {
     }
 
     public void roundOver(boolean roundWon) {
-        isTilesDisplayed = true;
         for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid.length; j++) {
+            for (int j = 0; j < grid[i].length; j++) {
                 buttons[i][j].setEnabled(false);
             }
         }
 
         if (roundWon) {
+            // Blink green
             manageBlinkEffect(rLayout, "#88e3ff", "#94ff9B");
         } else {
+            // Blink red and display missed tiles
             manageBlinkEffect(rLayout, "#88e3ff", "#ff6d6d");
+            for (int i = 0; i < grid.length; i++) {
+                for (int j = 0; j < grid[i].length; j++) {
+                    if (grid[i][j]) {
+                        buttons[i][j].getBackground().setLevel(1);
+                    }
+                }
+            }
         }
 
         final Handler handler = new Handler();
@@ -228,7 +233,6 @@ public class VisualMemoryGame extends AppCompatActivity {
             for (int j = 0; j < MAX_GRID_SIZE; j++) {
                 //buttons[i][j].setEnabled(true);
                 buttons[i][j].getBackground().setLevel(0);
-                //buttons[i][j].setBackgroundColor(Color.parseColor("#6495ED"));
                 buttons[i][j].setVisibility(View.VISIBLE);
             }
         }
