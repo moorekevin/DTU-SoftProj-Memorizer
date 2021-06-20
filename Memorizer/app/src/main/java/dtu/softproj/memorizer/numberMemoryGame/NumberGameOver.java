@@ -113,8 +113,7 @@ public class NumberGameOver extends AppCompatActivity {
     }
 
     private void saveAndShowScore() {
-        Intent mIntent = getIntent();
-        score = mIntent.getIntExtra("score", 0);
+        score = NumberGame.getLevel();
 
         mYourScoreValue = (TextView) findViewById(R.id.yourScoreValue);
         mYourScoreValue.setText("" + score);
