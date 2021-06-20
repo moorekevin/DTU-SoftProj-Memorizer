@@ -47,7 +47,6 @@ public class NumberMemoryActivity extends AppCompatActivity {
         gameDescription.setText("Memorize the longest sequence of numbers. \n " +
                 "The average person can remember \n 7 numbers at once");
 
-
         mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +81,4 @@ public class NumberMemoryActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
 }
