@@ -35,7 +35,7 @@ public class NumberGameOver extends AppCompatActivity {
     private EditText mNameInput;
     private ImageButton homeButton;
     private TextView mYourScoreValue;
-    private String currentGame = SequenceGame.GAME_NAME;
+    private String currentGame = NumberGame.GAME_NAME;
     private int score;
 
     @Override
@@ -141,8 +141,6 @@ public class NumberGameOver extends AppCompatActivity {
         if (highscore != -1) {
             TextView mHighScoreValue = findViewById(R.id.highScoreValue);
             mHighScoreValue.setText("" + highscore);
-        } else {
-            System.out.println("testteste");
         }
     }
 

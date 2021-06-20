@@ -65,7 +65,7 @@ public class VisualGameOver extends AppCompatActivity {
                 startActivity(gameHomeIntent);
             }
         });
-        
+
         saveAndShowScore();
 
         // Online score logic
@@ -137,8 +137,6 @@ public class VisualGameOver extends AppCompatActivity {
         if (highscore != -1) {
             TextView mHighScoreValue = findViewById(R.id.highScoreValue);
             mHighScoreValue.setText("" + highscore);
-        } else {
-            System.out.println("testteste");
         }
     }
 }
