@@ -23,7 +23,7 @@ public class VerbalMemoryGame extends AppCompatActivity {
     private final double PROBABILITY_COEFFICIENT = 0.638;
     private final double PROBABILITY_EXPONENT = -0.613;
     private int lives = 3;
-    private static int level = 0;
+    private int level = 0;
     private ArrayList<String> dictionary = new ArrayList<>();
     private ArrayList<String> wordsSeen = new ArrayList<>();
     private TextView tvWord;
@@ -123,7 +123,4 @@ public class VerbalMemoryGame extends AppCompatActivity {
         }
     }
 
-    public static int getLevel() {
-        return level;
-    }
 }
