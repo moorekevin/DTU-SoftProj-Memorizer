@@ -1,6 +1,6 @@
 package dtu.softproj.memorizer.statistics;
 
-import android.graphics.drawable.Drawable;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +14,6 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 
-import dtu.softproj.memorizer.MainActivity;
 import dtu.softproj.memorizer.R;
 import dtu.softproj.memorizer.numberMemoryGame.NumberGame;
 import dtu.softproj.memorizer.sequenceMemoryGame.SequenceGame;
@@ -27,13 +26,13 @@ public class Statistics extends AppCompatActivity {
     private ImageButton mOnlineOfflineToggle;
     private TextView mOnlineOfflineText;
     private boolean showingOfflineScores;
+    private Button mVerbalGameButton, mNumberGameButton, mSequenceGameButton, mVisualGameButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.statistics_layout);
         mGameName = (TextView) findViewById(R.id.gameName);
-
 
         // Getting the game info that called statistics and setting the view accordingly
         showingOfflineScores = true;
@@ -100,42 +99,45 @@ public class Statistics extends AppCompatActivity {
     }
 
     private void connectGameButtons() {
-        Button mVerbalGameButton = (Button) findViewById(R.id.verbalgamebutton);
+        mVerbalGameButton = (Button) findViewById(R.id.verbalgamebutton);
         mVerbalGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!game.equals(VerbalMemoryGame.GAME_NAME)) {
+                    setToggleButtonAnimation(mVerbalGameButton);
                     setStatistics(VerbalMemoryGame.GAME_NAME);
                 }
             }
         });
 
-
-        Button mNumberGameButton = (Button) findViewById(R.id.numbergamebutton);
+        mNumberGameButton = (Button) findViewById(R.id.numbergamebutton);
         mNumberGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!game.equals(NumberGame.GAME_NAME)) {
+                    setToggleButtonAnimation(mNumberGameButton);
                     setStatistics(NumberGame.GAME_NAME);
                 }
             }
         });
 
-        Button mSequenceGameButton = (Button) findViewById(R.id.sequencegamebutton);
+        mSequenceGameButton = (Button) findViewById(R.id.sequencegamebutton);
         mSequenceGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!game.equals(SequenceGame.GAME_NAME)) {
+                    setToggleButtonAnimation(mSequenceGameButton);
                     setStatistics(SequenceGame.GAME_NAME);
                 }
             }
         });
 
-        Button mVisualGameButton = (Button) findViewById(R.id.visualgamebutton);
+        mVisualGameButton = (Button) findViewById(R.id.visualgamebutton);
         mVisualGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!game.equals(VisualMemoryGame.GAME_NAME)) {
+                    setToggleButtonAnimation(mVisualGameButton);
                     setStatistics(VisualMemoryGame.GAME_NAME);
                 }
             }
@@ -152,5 +154,18 @@ public class Statistics extends AppCompatActivity {
         }
     }
 
+    public void setToggleButtonAnimation(Button pressedButton) {
 
+        Button[] butt = {mVisualGameButton, mSequenceGameButton, mNumberGameButton, mVerbalGameButton};
+
+        for (Button button :butt) {
+            if (button.equals(pressedButton)) {
+                button.getBackground().setAlpha(255);
+                button.setTextColor(Color.BLACK);
+            } else {
+                button.getBackground().setAlpha(128);
+                button.setTextColor(Color.parseColor("#90000000"));
+            }
+        }
+    }
 }

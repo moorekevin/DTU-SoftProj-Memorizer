@@ -32,6 +32,60 @@
         android:layout_weight="0">
 
         <Button
+            android:id="@+id/sequencegamebutton"
+            android:layout_width="90dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/staatliches"
+            android:shadowColor="@color/black"
+            android:text="Sequence"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/numbergamebutton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/numbergamebutton"
+            android:layout_width="90dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/staatliches"
+            android:shadowColor="@color/black"
+            android:text="Number"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/visualgamebutton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/sequencegamebutton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/visualgamebutton"
+            android:layout_width="90dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/staatliches"
+            android:shadowColor="@color/black"
+            android:text="Visual"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/verbalgamebutton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/numbergamebutton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
             android:id="@+id/verbalgamebutton"
             android:layout_width="90dp"
             android:layout_height="60dp"
@@ -42,58 +96,12 @@
             android:textAllCaps="false"
             android:textColor="@android:color/black"
             android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/numbergamebutton"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/sequencegamebutton"
-            android:layout_width="90dp"
-            android:layout_height="60dp"
-            android:background="@drawable/rounded_button"
-            android:fontFamily="@font/staatliches"
-            android:shadowColor="@color/black"
-            android:text="Sequence"
-            android:textAllCaps="false"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/numbergamebutton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/visualgamebutton"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/numbergamebutton"
-            android:layout_width="90dp"
-            android:layout_height="60dp"
-            android:background="@drawable/rounded_button"
-            android:fontFamily="@font/staatliches"
-            android:shadowColor="@color/black"
-            android:text="Number"
-            android:textAllCaps="false"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/verbalgamebutton"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/sequencegamebutton"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/visualgamebutton"
-            android:layout_width="90dp"
-            android:layout_height="60dp"
-            android:background="@drawable/rounded_button"
-            android:fontFamily="@font/staatliches"
-            android:shadowColor="@color/black"
-            android:text="Visual"
-            android:textAllCaps="false"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/sequencegamebutton"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
