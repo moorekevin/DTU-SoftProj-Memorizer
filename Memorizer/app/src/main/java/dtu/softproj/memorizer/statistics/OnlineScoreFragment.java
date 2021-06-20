@@ -39,6 +39,8 @@ public class OnlineScoreFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         tl = (TableLayout) view.findViewById(R.id.tableLayout);
+        TextView mLeftHeadTable = (TextView) view.findViewById(R.id.leftHeadTable);
+        mLeftHeadTable.setText("Player name");
 
         // Getting the database values
         mUserDatabase = FirebaseDatabase.getInstance("https://dtu-memorizer-default-rtdb.europe-west1.firebasedatabase.app/")

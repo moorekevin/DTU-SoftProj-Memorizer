@@ -43,8 +43,11 @@ public class OfflineScoreFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         tl = (TableLayout) view.findViewById(R.id.tableLayout);
-        createTable();
 
+        TextView mLeftHeadTable = (TextView) view.findViewById(R.id.leftHeadTable);
+        mLeftHeadTable.setText("Date and time");
+
+        createTable();
     }
 
     private void createRows(String dateKey, int scoreKey, int index) {

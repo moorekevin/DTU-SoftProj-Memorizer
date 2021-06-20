@@ -18,7 +18,6 @@ import dtu.softproj.memorizer.visualMemoryGame.VisualMemoryActivity;
 
 public class MainActivity extends AppCompatActivity {
     private ImageButton mButton;
-    public static final String ACTIVITY_NAME = "Main Activity";
     private final String TOAST_MESSAGE = "More game modes will be added soon";
 
     @Override
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Statistics.class);
-                intent.putExtra("Game", ACTIVITY_NAME);
+                intent.putExtra("Game", "Press game to view statistics");
                 startActivity(intent);
             }
         });
