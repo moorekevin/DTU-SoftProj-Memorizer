@@ -60,7 +60,7 @@ public class VisualMemoryActivity extends AppCompatActivity {
     private void getAllTimeHighScore() {
         TextView allTimeScore = (TextView) findViewById(R.id.gameHighScoreValue);
         DatabaseReference mUserDatabase = FirebaseDatabase.getInstance("https://dtu-memorizer-default-rtdb.europe-west1.firebasedatabase.app/")
-                .getReference("users/" + SequenceGame.GAME_NAME);
+                .getReference("users/" + VisualMemoryGame.GAME_NAME);
         // Finding the player with the highest score in game
         Query mDatabaseHighestPlayer = mUserDatabase.orderByChild("score").limitToLast(1);
         mDatabaseHighestPlayer.addValueEventListener(new ValueEventListener() {

@@ -139,6 +139,6 @@ public class SequenceGameOver extends AppCompatActivity {
         if (highscore != -1) {
             TextView mHighScoreValue = findViewById(R.id.highScoreValue);
             mHighScoreValue.setText("" + highscore);
-        } 
+        }
     }
 }
