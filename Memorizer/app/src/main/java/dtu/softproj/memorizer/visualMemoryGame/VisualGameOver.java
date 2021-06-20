@@ -100,7 +100,7 @@ public class VisualGameOver extends AppCompatActivity {
             }
         });
 
-        if (VisualMemoryGame.getLevel() > 1) {
+        if (score > 1) {
             SharedPreferences prefs = this.getSharedPreferences(currentGame, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
