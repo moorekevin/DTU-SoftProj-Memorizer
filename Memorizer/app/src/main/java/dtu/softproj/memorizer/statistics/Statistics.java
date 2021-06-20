@@ -25,6 +25,7 @@ public class Statistics extends AppCompatActivity {
     private TextView mGameName;
     private String game;
     private ImageButton mOnlineOfflineToggle;
+    private TextView mOnlineOfflineText;
     private boolean showingOfflineScores;
 
     @Override
@@ -34,32 +35,15 @@ public class Statistics extends AppCompatActivity {
         mGameName = (TextView) findViewById(R.id.gameName);
 
 
-        // Getting the game info that called statistics
-        game = getIntent().getStringExtra("Game");
-
-        mGameName.setText(game);
-
+        // Getting the game info that called statistics and setting the view accordingly
+        showingOfflineScores = true;
+        setStatistics(getIntent().getStringExtra("Game"));
 
         LinearLayout rLayout = (LinearLayout) findViewById(R.id.stasticsRelativeLayout);
-        switch (game) {
-            case NumberGame.GAME_NAME:
-                break;
-
-            case SequenceGame.GAME_NAME:
-                break;
-
-            case VisualMemoryGame.GAME_NAME:
-                break;
-
-            case VerbalMemoryGame.GAME_NAME:
-                break;
-        }
-        createLocalScoreFragment();
 
         // Setting the toggle button between online and offline scores
-        TextView mOnlineOfflineText = (TextView) findViewById(R.id.onlineOfflineText);
+        mOnlineOfflineText = (TextView) findViewById(R.id.onlineOfflineText);
 
-        showingOfflineScores = true;
         mOnlineOfflineToggle = (ImageButton) findViewById(R.id.onlineOfflineToggle);
         mOnlineOfflineToggle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +65,8 @@ public class Statistics extends AppCompatActivity {
                 }
             }
         });
+
+        connectGameButtons();
     }
 
     private void createLocalScoreFragment() {
@@ -113,13 +99,13 @@ public class Statistics extends AppCompatActivity {
         ft.commit();
     }
 
-    private void connectButtons() {
+    private void connectGameButtons() {
         Button mVerbalGameButton = (Button) findViewById(R.id.verbalgamebutton);
         mVerbalGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!game.equals(VerbalMemoryGame.GAME_NAME)) {
-
+                    setStatistics(VerbalMemoryGame.GAME_NAME);
                 }
             }
         });
@@ -129,7 +115,9 @@ public class Statistics extends AppCompatActivity {
         mNumberGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (!game.equals(NumberGame.GAME_NAME)) {
+                    setStatistics(NumberGame.GAME_NAME);
+                }
             }
         });
 
@@ -137,7 +125,9 @@ public class Statistics extends AppCompatActivity {
         mSequenceGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (!game.equals(SequenceGame.GAME_NAME)) {
+                    setStatistics(SequenceGame.GAME_NAME);
+                }
             }
         });
 
@@ -145,9 +135,21 @@ public class Statistics extends AppCompatActivity {
         mVisualGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (!game.equals(VisualMemoryGame.GAME_NAME)) {
+                    setStatistics(VisualMemoryGame.GAME_NAME);
+                }
             }
         });
+    }
+
+    private void setStatistics(String gameName) {
+        game = gameName;
+        mGameName.setText(game);
+        if (showingOfflineScores) {
+            createLocalScoreFragment();
+        } else {
+            createOnlineScoreFragment();
+        }
     }
 
 
