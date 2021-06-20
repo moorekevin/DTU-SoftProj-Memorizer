@@ -3,6 +3,7 @@ package dtu.softproj.memorizer.statistics;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import dtu.softproj.memorizer.MainActivity;
 import dtu.softproj.memorizer.R;
 import dtu.softproj.memorizer.numberMemoryGame.NumberGame;
 import dtu.softproj.memorizer.sequenceMemoryGame.SequenceGame;
+import dtu.softproj.memorizer.verbalMemoryGame.VerbalMemoryGame;
 import dtu.softproj.memorizer.visualMemoryGame.VisualMemoryGame;
 
 public class Statistics extends AppCompatActivity {
@@ -34,9 +36,9 @@ public class Statistics extends AppCompatActivity {
 
         // Getting the game info that called statistics
         game = getIntent().getStringExtra("Game");
-        if (!game.equals(MainActivity.ACTIVITY_NAME)) {
-            mGameName.setText(game);
-        }
+
+        mGameName.setText(game);
+
 
         LinearLayout rLayout = (LinearLayout) findViewById(R.id.stasticsRelativeLayout);
         switch (game) {
@@ -49,7 +51,7 @@ public class Statistics extends AppCompatActivity {
             case VisualMemoryGame.GAME_NAME:
                 break;
 
-            case MainActivity.ACTIVITY_NAME:
+            case VerbalMemoryGame.GAME_NAME:
                 break;
         }
         createLocalScoreFragment();
@@ -109,6 +111,43 @@ public class Statistics extends AppCompatActivity {
                 .beginTransaction();
         ft.replace(R.id.scoreTable, onlFrag);
         ft.commit();
+    }
+
+    private void connectButtons() {
+        Button mVerbalGameButton = (Button) findViewById(R.id.verbalgamebutton);
+        mVerbalGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!game.equals(VerbalMemoryGame.GAME_NAME)) {
+
+                }
+            }
+        });
+
+
+        Button mNumberGameButton = (Button) findViewById(R.id.numbergamebutton);
+        mNumberGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        Button mSequenceGameButton = (Button) findViewById(R.id.sequencegamebutton);
+        mSequenceGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        Button mVisualGameButton = (Button) findViewById(R.id.visualgamebutton);
+        mVisualGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
 

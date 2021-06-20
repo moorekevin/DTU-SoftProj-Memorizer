@@ -59,8 +59,6 @@ public class OnlineScoreFragment extends Fragment {
                             createRows(user.getName(), user.getScore(), index);
                         }
                     }
-                } else {
-                    System.out.println("Test test test");
                 }
             }
             @Override

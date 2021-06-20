@@ -12,7 +12,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 import dtu.softproj.memorizer.R;
+import dtu.softproj.memorizer.User;
+import dtu.softproj.memorizer.sequenceMemoryGame.SequenceGame;
 
 public class VisualMemoryActivity extends AppCompatActivity {
     private Button mPlayButton;
@@ -44,5 +53,32 @@ public class VisualMemoryActivity extends AppCompatActivity {
                 startActivity(playIntent);
             }
         });
+
+        getAllTimeHighScore();
     }
+
+    private void getAllTimeHighScore() {
+        TextView allTimeScore = (TextView) findViewById(R.id.gameHighScoreValue);
+        DatabaseReference mUserDatabase = FirebaseDatabase.getInstance("https://dtu-memorizer-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("users/" + SequenceGame.GAME_NAME);
+        // Finding the player with the highest score in game
+        Query mDatabaseHighestPlayer = mUserDatabase.orderByChild("score").limitToLast(1);
+        mDatabaseHighestPlayer.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot){
+                for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+                    if (childSnapshot.exists()) {
+                        User user = childSnapshot.getValue(User.class);
+                        user.setName(childSnapshot.getKey());
+                        allTimeScore.setText("" + user.getName() + " with the score of " + user.getScore() + "!");
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                throw databaseError.toException();
+            }
+        });
+    }
+
 }

@@ -21,11 +21,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import dtu.softproj.memorizer.R;
 import dtu.softproj.memorizer.User;
+import dtu.softproj.memorizer.sequenceMemoryGame.SequenceGame;
 
 
 public class NumberMemoryActivity extends AppCompatActivity {
  private Button mPlayButton;
- private DatabaseReference mUserDatabase;
 
     public void onCreate(Bundle savedInstanceState) {
 
@@ -47,11 +47,22 @@ public class NumberMemoryActivity extends AppCompatActivity {
         gameDescription.setText("Memorize the longest sequence of numbers. \n " +
                 "The average person can remember \n 7 numbers at once");
 
-        // Setting the highscore using the database
-        TextView allTimeScore = (TextView) findViewById(R.id.gameHighScoreValue);
 
-        mUserDatabase = FirebaseDatabase.getInstance("https://dtu-memorizer-default-rtdb.europe-west1.firebasedatabase.app/")
-                .getReference("users/" + NumberGame.GAME_NAME);
+        mPlayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent playIntent = new Intent(NumberMemoryActivity.this, NumberGame.class);
+                startActivity(playIntent);
+            }
+        });
+
+        getAllTimeHighScore();
+    }
+
+    private void getAllTimeHighScore() {
+        TextView allTimeScore = (TextView) findViewById(R.id.gameHighScoreValue);
+        DatabaseReference mUserDatabase = FirebaseDatabase.getInstance("https://dtu-memorizer-default-rtdb.europe-west1.firebasedatabase.app/")
+                .getReference("users/" + SequenceGame.GAME_NAME);
         // Finding the player with the highest score in game
         Query mDatabaseHighestPlayer = mUserDatabase.orderByChild("score").limitToLast(1);
         mDatabaseHighestPlayer.addValueEventListener(new ValueEventListener() {
@@ -70,16 +81,8 @@ public class NumberMemoryActivity extends AppCompatActivity {
                 throw databaseError.toException();
             }
         });
-
-
-        mPlayButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent playIntent = new Intent(NumberMemoryActivity.this, NumberGame.class);
-                startActivity(playIntent);
-            }
-        });
     }
 
-    
+
+
 }
