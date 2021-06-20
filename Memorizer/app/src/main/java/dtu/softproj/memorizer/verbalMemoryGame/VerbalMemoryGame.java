@@ -24,6 +24,7 @@ public class VerbalMemoryGame extends AppCompatActivity {
     private final double PROBABILITY_EXPONENT = -0.613;
     private int lives = 3;
     private int level = 0;
+    private double probabilityOfNewWord;
     private ArrayList<String> dictionary = new ArrayList<>();
     private ArrayList<String> wordsSeen = new ArrayList<>();
     private TextView tvWord;
@@ -50,8 +51,11 @@ public class VerbalMemoryGame extends AppCompatActivity {
     public void newRound() {
         tvLives.setText("Lives: " + lives);
         tvScore.setText("Score: " + level);
-
-        double probabilityOfNewWord = probabilityOfNewWord();
+        if (level < 2) {
+            probabilityOfNewWord = 1;
+        } else {
+            probabilityOfNewWord = probabilityOfNewWord();
+        }
         double number = Math.random();
         if (number < probabilityOfNewWord) {
             if (dictionary.isEmpty()) {
@@ -65,8 +69,13 @@ public class VerbalMemoryGame extends AppCompatActivity {
                 dictionary.remove(index);
             }
         } else {
-            int index = (int) (Math.random() * wordsSeen.size());
-            tvWord.setText(wordsSeen.get(index));
+            while (true) {
+                int index = (int) (Math.random() * wordsSeen.size());
+                if (!tvWord.getText().toString().equals(wordsSeen.get(index))) {
+                    tvWord.setText(wordsSeen.get(index));
+                    break;
+                }
+            }
         }
     }
 
