@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/verbal_layout"
     android:background="#e088ff"
     android:orientation="vertical">
 
@@ -56,11 +57,11 @@
             <TextView
                 android:id="@+id/tvWord"
                 android:layout_width="wrap_content"
-                android:fontFamily="@font/staatliches"
-                android:textColor="@color/black"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/staatliches"
                 android:text="@string/word_not_found"
-                android:textSize="36dp" />
+                android:textColor="@color/black"
+                android:textSize="48dp" />
         </LinearLayout>
     </LinearLayout>
 

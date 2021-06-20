@@ -1,9 +1,15 @@
 package dtu.softproj.memorizer.verbalMemoryGame;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +36,7 @@ public class VerbalMemoryGame extends AppCompatActivity {
     private TextView tvWord;
     private TextView tvLives;
     private TextView tvScore;
+    private LinearLayout rLayout;
 
 
     @Override
@@ -39,6 +46,7 @@ public class VerbalMemoryGame extends AppCompatActivity {
         tvWord = findViewById(R.id.tvWord);
         tvLives = findViewById(R.id.tvVerbalLives);
         tvScore = findViewById(R.id.tvVerbalScore);
+        rLayout = (LinearLayout) findViewById(R.id.verbal_layout);
 
         defDictionary();
         newRound();
@@ -81,9 +89,11 @@ public class VerbalMemoryGame extends AppCompatActivity {
 
     public void roundOver(boolean roundWon) {
         if (roundWon) {
+            manageBlinkEffect(rLayout, "#e088ff", "#94ff9B", 200);
             level++;
             newRound();
         } else {
+            manageBlinkEffect(rLayout, "#e088ff", "#ff6d6d", 300);
             lives--;
             if (lives > 0) {
                 newRound();
@@ -130,6 +140,17 @@ public class VerbalMemoryGame extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @SuppressLint("WrongConstant")
+    public void manageBlinkEffect(LinearLayout cLayout, String startColor, String endColor, int duration) {
+        ObjectAnimator anim = ObjectAnimator.ofInt(cLayout, "backgroundColor",
+                Color.parseColor(startColor), Color.parseColor(endColor));
+        anim.setDuration(duration);
+        anim.setEvaluator(new ArgbEvaluator());
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(1);
+        anim.start();
     }
 
 }
