@@ -24,7 +24,7 @@ public class VisualMemoryGame extends AppCompatActivity {
     private final int END_DELAY = 1000;
     private final int START_DELAY = 750;
     private final int MAX_GRID_SIZE = 8;
-    private static int level = 1;
+    private int level = 1;
     private int lives = 3;
     private int tempLives = 3;
     private Button[][] buttons = new Button[MAX_GRID_SIZE][MAX_GRID_SIZE];
@@ -32,10 +32,6 @@ public class VisualMemoryGame extends AppCompatActivity {
     private int numberOfTrueTilesPressed;
     private CountDownTimer mCountDownTimer;
     private LinearLayout rLayout;
-
-    public static int getLevel() {
-        return level;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
