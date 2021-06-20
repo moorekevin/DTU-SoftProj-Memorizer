@@ -156,7 +156,7 @@ public class Statistics extends AppCompatActivity {
 
     public void setToggleButtonAnimation(Button pressedButton) {
 
-        Button[] butt = {mVisualGameButton, mSequenceGameButton, mNumberGameButton, mVerbalGameButton};
+        Button[] butt = {mSequenceGameButton, mNumberGameButton, mVisualGameButton, mVerbalGameButton};
 
         for (Button button :butt) {
             if (button.equals(pressedButton)) {
