@@ -36,8 +36,10 @@ public class VerbalGameOver extends AppCompatActivity {
     private Button mPlayAgain;
     private Button mStatistics;
     private ImageButton homeButton;
+    private TextView mYourScoreValue;
     private EditText mNameInput;
     private Button mSubmitScore;
+    private int score;
 
     private String currentGame = VerbalMemoryGame.GAME_NAME;
 
@@ -55,11 +57,7 @@ public class VerbalGameOver extends AppCompatActivity {
             }
         });
 
-        Intent mIntent = getIntent();
-        int score = mIntent.getIntExtra("score", 0);
-
-        TextView mYourScoreValue = (TextView) findViewById(R.id.yourScoreValue);
-        mYourScoreValue.setText("" + score);
+        saveAndShowScore();
 
         homeButton = (ImageButton) findViewById(R.id.homeButton);
 
@@ -74,15 +72,7 @@ public class VerbalGameOver extends AppCompatActivity {
             }
         });
 
-        // Score logic
-        if (score > 1) {
-            SharedPreferences prefs = this.getSharedPreferences(currentGame, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date date = new Date();
-            editor.putInt(formatter.format(date), Integer.parseInt(mYourScoreValue.getText().toString()));
-            editor.commit();
-        }
+        // Online score logic
         mSubmitScore = (Button) findViewById(R.id.name_submit);
         mNameInput = (EditText) findViewById(R.id.typeName);
         mSubmitScore.setOnClickListener(new View.OnClickListener() {
@@ -121,4 +111,39 @@ public class VerbalGameOver extends AppCompatActivity {
             }
         });
     }
+
+    private void saveAndShowScore() {
+        Intent mIntent = getIntent();
+        score = mIntent.getIntExtra("score", 0);
+
+        mYourScoreValue = (TextView) findViewById(R.id.yourScoreValue);
+        mYourScoreValue.setText("" + score);
+
+        SharedPreferences prefs = this.getSharedPreferences(currentGame, Context.MODE_PRIVATE);
+        if (score > 0) {
+            SharedPreferences.Editor editor = prefs.edit();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Date date = new Date();
+            editor.putInt(formatter.format(date), Integer.parseInt(mYourScoreValue.getText().toString()));
+            editor.commit();
+        }
+
+        // Showing alltime personal highscore
+
+        int highscore = -1;
+        for (String dateKey : prefs.getAll().keySet()) {
+            int scoreFound = (int) prefs.getAll().get(dateKey);
+            if (scoreFound > highscore) {
+                highscore = scoreFound;
+            }
+        }
+
+        if (highscore != -1) {
+            TextView mHighScoreValue = findViewById(R.id.highScoreValue);
+            mHighScoreValue.setText("" + highscore);
+        } else {
+            System.out.println("testteste");
+        }
+    }
+
 }

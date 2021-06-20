@@ -24,6 +24,7 @@ import java.util.Date;
 
 import dtu.softproj.memorizer.MainActivity;
 import dtu.softproj.memorizer.R;
+import dtu.softproj.memorizer.sequenceMemoryGame.SequenceGame;
 import dtu.softproj.memorizer.statistics.Statistics;
 import dtu.softproj.memorizer.User;
 
@@ -33,7 +34,9 @@ public class NumberGameOver extends AppCompatActivity {
     private Button mSubmitScore;
     private EditText mNameInput;
     private ImageButton homeButton;
-    private TextView mYourScoreValue, mHighScoreValue;
+    private TextView mYourScoreValue;
+    private String currentGame = SequenceGame.GAME_NAME;
+    private int score;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,22 +47,12 @@ public class NumberGameOver extends AppCompatActivity {
         homeButton = (ImageButton) findViewById(R.id.homeButton);
         mStatistics = (Button) findViewById(R.id.statisticsButton);
 
-        // For highscore
-        mYourScoreValue = (TextView) findViewById(R.id.yourScoreValue);
-        mYourScoreValue.setText("" + (NumberGame.getLevel() - 1));
-        mHighScoreValue = (TextView) findViewById(R.id.highScoreValue);
+        saveAndShowScore();
+
+        // For online score
         mSubmitScore = (Button) findViewById(R.id.name_submit);
         mNameInput = (EditText) findViewById(R.id.typeName);
 
-        // Saving the score locally using current time and date for key (if score is greater than 0)
-        if (NumberGame.getLevel() > 1) {
-            SharedPreferences prefs = this.getSharedPreferences(NumberGame.GAME_NAME, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date date = new Date();
-            editor.putInt(formatter.format(date), Integer.parseInt(mYourScoreValue.getText().toString()));
-            editor.commit();
-        }
 
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.gameOverRelativeLayout);
         rLayout.setBackgroundColor(Color.parseColor(NumberGame.GAME_COLOR));
@@ -117,6 +110,40 @@ public class NumberGameOver extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void saveAndShowScore() {
+        Intent mIntent = getIntent();
+        score = mIntent.getIntExtra("score", 0);
+
+        mYourScoreValue = (TextView) findViewById(R.id.yourScoreValue);
+        mYourScoreValue.setText("" + score);
+
+        SharedPreferences prefs = this.getSharedPreferences(currentGame, Context.MODE_PRIVATE);
+        if (score > 0) {
+            SharedPreferences.Editor editor = prefs.edit();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Date date = new Date();
+            editor.putInt(formatter.format(date), Integer.parseInt(mYourScoreValue.getText().toString()));
+            editor.commit();
+        }
+
+        // Showing alltime personal highscore
+
+        int highscore = -1;
+        for (String dateKey : prefs.getAll().keySet()) {
+            int scoreFound = (int) prefs.getAll().get(dateKey);
+            if (scoreFound > highscore) {
+                highscore = scoreFound;
+            }
+        }
+
+        if (highscore != -1) {
+            TextView mHighScoreValue = findViewById(R.id.highScoreValue);
+            mHighScoreValue.setText("" + highscore);
+        } else {
+            System.out.println("testteste");
+        }
     }
 
 

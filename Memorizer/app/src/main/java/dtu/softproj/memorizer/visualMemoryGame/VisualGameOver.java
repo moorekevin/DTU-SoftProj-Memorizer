@@ -36,6 +36,8 @@ public class VisualGameOver extends AppCompatActivity {
     private Button mSubmitScore;
     private EditText mNameInput;
     private String currentGame = VisualMemoryGame.GAME_NAME;
+    private int score;
+    private TextView mYourScoreValue;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,13 +53,6 @@ public class VisualGameOver extends AppCompatActivity {
             }
         });
 
-        Intent mIntent = getIntent();
-        int score = mIntent.getIntExtra("score", 0);
-
-        TextView mYourScoreValue = (TextView) findViewById(R.id.yourScoreValue);
-        mYourScoreValue.setText("" + score);
-
-//      mStatistics = (Button) findViewById(R.id.statisticsButton);
         homeButton = (ImageButton) findViewById(R.id.homeButton);
 
         RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.gameOverRelativeLayout);
@@ -70,8 +65,10 @@ public class VisualGameOver extends AppCompatActivity {
                 startActivity(gameHomeIntent);
             }
         });
+        
+        saveAndShowScore();
 
-        // Score logic
+        // Online score logic
         mSubmitScore = (Button) findViewById(R.id.name_submit);
         mNameInput = (EditText) findViewById(R.id.typeName);
         mSubmitScore.setOnClickListener(new View.OnClickListener() {
@@ -100,15 +97,6 @@ public class VisualGameOver extends AppCompatActivity {
             }
         });
 
-        if (score > 1) {
-            SharedPreferences prefs = this.getSharedPreferences(currentGame, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date date = new Date();
-            editor.putInt(formatter.format(date), Integer.parseInt(mYourScoreValue.getText().toString()));
-            editor.commit();
-        }
-
         mStatistics = (Button) findViewById(R.id.statisticsButton);
         mStatistics.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,5 +106,39 @@ public class VisualGameOver extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void saveAndShowScore() {
+        Intent mIntent = getIntent();
+        score = mIntent.getIntExtra("score", 0);
+
+        mYourScoreValue = (TextView) findViewById(R.id.yourScoreValue);
+        mYourScoreValue.setText("" + score);
+
+        SharedPreferences prefs = this.getSharedPreferences(currentGame, Context.MODE_PRIVATE);
+        if (score > 0) {
+            SharedPreferences.Editor editor = prefs.edit();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Date date = new Date();
+            editor.putInt(formatter.format(date), Integer.parseInt(mYourScoreValue.getText().toString()));
+            editor.commit();
+        }
+
+        // Showing alltime personal highscore
+
+        int highscore = -1;
+        for (String dateKey : prefs.getAll().keySet()) {
+            int scoreFound = (int) prefs.getAll().get(dateKey);
+            if (scoreFound > highscore) {
+                highscore = scoreFound;
+            }
+        }
+
+        if (highscore != -1) {
+            TextView mHighScoreValue = findViewById(R.id.highScoreValue);
+            mHighScoreValue.setText("" + highscore);
+        } else {
+            System.out.println("testteste");
+        }
     }
 }
