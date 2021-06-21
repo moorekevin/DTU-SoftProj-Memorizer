@@ -38,7 +38,6 @@ public class SubmitNumberFragment extends Fragment {
                 }
 
                 String numberString = getArguments().getString("numberString");
-                System.out.println("Passed numberString: " + numberString);
                 if (input.equals(numberString)) {
                     getFragmentManager()
                             .beginTransaction()

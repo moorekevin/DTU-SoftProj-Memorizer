@@ -22,11 +22,6 @@ public class DisplayNumberFragment extends Fragment {
     private int timerSeconds = 2 + NumberGame.getLevel();
     private String numberString;
 
-
-    public DisplayNumberFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

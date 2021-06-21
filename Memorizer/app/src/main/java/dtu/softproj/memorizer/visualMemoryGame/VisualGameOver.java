@@ -121,7 +121,7 @@ public class VisualGameOver extends AppCompatActivity {
             editor.commit();
         }
 
-        // Showing alltime personal highscore
+        // Showing all-time personal highscore
 
         int highscore = -1;
         for (String dateKey : prefs.getAll().keySet()) {

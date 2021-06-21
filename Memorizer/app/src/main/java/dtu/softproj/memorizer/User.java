@@ -5,7 +5,12 @@ public class User {
     private int score;
 
     public User() {
+        // Needs empty constructor
+    }
 
+    public User(String name, int score) {
+        this.name = name;
+        this.score = score;
     }
 
     public void setName(String name) {
@@ -13,11 +18,6 @@ public class User {
     }
 
     public void setScore(int score) {
-        this.score = score;
-    }
-
-    public User(String name, int score) {
-        this.name = name;
         this.score = score;
     }
 

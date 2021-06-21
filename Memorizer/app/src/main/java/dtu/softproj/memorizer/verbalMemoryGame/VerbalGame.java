@@ -57,10 +57,10 @@ public class VerbalGame extends AppCompatActivity {
         double number = Math.random();
         if (level < 2 || number < probabilityOfNewWord()) {
             if (dictionary.isEmpty()) {
+                System.out.println("No more words in our dictionary. You Win!");
                 finish();
                 Intent intent = new Intent(VerbalGame.this, VerbalStartMenu.class);
                 startActivity(intent);
-                System.out.println("No more words in our dictionary. You Win!");
             } else {
                 int index = (int) (Math.random() * dictionary.size());
                 tvWord.setText(dictionary.get(index));
@@ -118,6 +118,7 @@ public class VerbalGame extends AppCompatActivity {
 
     public void defDictionary() {
         //text file found at: https://github.com/hugsy/stuff/blob/master/random-word/english-nouns.txt
+        //https://stackoverflow.com/questions/6420293/%7D
         try {
             InputStream inputStream = getResources().openRawResource(R.raw.dictionary);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
