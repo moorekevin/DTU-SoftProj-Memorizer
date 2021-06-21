@@ -118,7 +118,7 @@ public class VerbalGame extends AppCompatActivity {
 
     public void defDictionary() {
         //text file found at: https://github.com/hugsy/stuff/blob/master/random-word/english-nouns.txt
-        //https://stackoverflow.com/questions/6420293/%7D
+        //
         try {
             InputStream inputStream = getResources().openRawResource(R.raw.dictionary);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));

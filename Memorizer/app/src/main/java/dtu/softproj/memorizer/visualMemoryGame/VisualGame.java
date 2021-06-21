@@ -4,7 +4,6 @@ import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
-import android.os.CountDownTimer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,7 +29,6 @@ public class VisualGame extends AppCompatActivity {
     private Button[][] buttons = new Button[MAX_GRID_SIZE][MAX_GRID_SIZE];
     private boolean[][] grid;
     private int numberOfTrueTilesPressed;
-    private CountDownTimer mCountDownTimer;
     private LinearLayout layout;
 
     @Override
