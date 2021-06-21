@@ -31,20 +31,14 @@ public class VisualMemoryGame extends AppCompatActivity {
     private boolean[][] grid;
     private int numberOfTrueTilesPressed;
     private CountDownTimer mCountDownTimer;
-    private LinearLayout rLayout;
+    private LinearLayout layout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.visual_memory_layout);
-        rLayout = (LinearLayout) findViewById(R.id.visual_layout);
+        setContentView(R.layout.visual_layout);
+        layout = (LinearLayout) findViewById(R.id.visual_layout);
         buttonViewsToArray();
-
-        for (int i = 0; i < buttons.length; i++) {
-            for (int j = 0; j < buttons[i].length; j++) {
-                buttons[i][j].setEnabled(false);
-            }
-        }
 
         startRound();
     }
@@ -55,7 +49,7 @@ public class VisualMemoryGame extends AppCompatActivity {
                 String buttonId = "b" + (i + 1) + "_" + (j + 1);
                 int resId = getResources().getIdentifier(buttonId, "id", getPackageName());
                 buttons[i][j] = (Button) findViewById(resId);
-
+                buttons[i][j].setEnabled(false);
             }
         }
     }
@@ -77,13 +71,13 @@ public class VisualMemoryGame extends AppCompatActivity {
         for (int i = 0; i < dimension; i++) {
             for (int j = dimension; j < MAX_GRID_SIZE; j++) {
 
-                //Set visibility for linearLayout rows
+                //Remove visibility for linearLayout rows higher than dimension
                 String rowResId = "linearLayout" + (j + 1);
                 int rowId = getResources().getIdentifier(rowResId, "id", getPackageName());
                 LinearLayout row = findViewById(rowId);
-
                 row.setVisibility(View.GONE);
-                //Set visibility for buttons
+
+                //Remove visibility for buttons on visible rows higher than dimension
                 buttons[i][j].setVisibility(View.GONE);
             }
         }
@@ -151,18 +145,12 @@ public class VisualMemoryGame extends AppCompatActivity {
                 btn.getBackground().setLevel(2);
                 if (numberOfTrueTilesPressed == level + 2) {
                     roundOver(true);
-                } else {
-
-                    //btn.setBackgroundColor(Color.parseColor("#9CD2CE"));
                 }
             } else {
                 tempLives--;
                 btn.getBackground().setLevel(3);
                 if (tempLives < 1) {
                     roundOver(false);
-                } else {
-
-                    //btn.setBackgroundColor(Color.parseColor("#294191"));
                 }
             }
         });
@@ -177,10 +165,10 @@ public class VisualMemoryGame extends AppCompatActivity {
 
         if (roundWon) {
             // Blink green
-            manageBlinkEffect(rLayout, "#88e3ff", "#94ff9B");
+            manageBlinkEffect(layout, "#88e3ff", "#94ff9B");
         } else {
             // Blink red and display missed tiles
-            manageBlinkEffect(rLayout, "#88e3ff", "#ff6d6d");
+            manageBlinkEffect(layout, "#88e3ff", "#ff6d6d");
             for (int i = 0; i < grid.length; i++) {
                 for (int j = 0; j < grid[i].length; j++) {
                     if (grid[i][j]) {
