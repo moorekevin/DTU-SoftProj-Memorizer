@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import dtu.softproj.memorizer.Blinking;
 import dtu.softproj.memorizer.R;
 
 public class VerbalMemoryGame extends AppCompatActivity {
@@ -89,11 +91,10 @@ public class VerbalMemoryGame extends AppCompatActivity {
 
     public void roundOver(boolean roundWon) {
         if (roundWon) {
-            manageBlinkEffect(rLayout, "#e088ff", "#94ff9B", 200);
             level++;
             newRound();
         } else {
-            manageBlinkEffect(rLayout, "#e088ff", "#ff6d6d", 300);
+            Blinking.manageBlinkEffect(rLayout, "#e088ff", "#ff6d6d", 300);
             lives--;
             if (lives > 0) {
                 newRound();
@@ -142,15 +143,6 @@ public class VerbalMemoryGame extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("WrongConstant")
-    public void manageBlinkEffect(LinearLayout cLayout, String startColor, String endColor, int duration) {
-        ObjectAnimator anim = ObjectAnimator.ofInt(cLayout, "backgroundColor",
-                Color.parseColor(startColor), Color.parseColor(endColor));
-        anim.setDuration(duration);
-        anim.setEvaluator(new ArgbEvaluator());
-        anim.setRepeatMode(Animation.REVERSE);
-        anim.setRepeatCount(1);
-        anim.start();
-    }
+
 
 }

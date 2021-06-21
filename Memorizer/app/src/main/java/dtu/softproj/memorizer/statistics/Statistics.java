@@ -36,7 +36,8 @@ public class Statistics extends AppCompatActivity {
 
         // Getting the game info that called statistics and setting the view accordingly
         showingOfflineScores = true;
-        setStatistics(getIntent().getStringExtra("Game"));
+        String gameName = getIntent().getStringExtra("Game");
+        setStatistics(gameName);
 
         LinearLayout rLayout = (LinearLayout) findViewById(R.id.stasticsRelativeLayout);
 
@@ -65,7 +66,7 @@ public class Statistics extends AppCompatActivity {
             }
         });
 
-        connectGameButtons();
+        connectGameButtons(gameName);
     }
 
     private void createLocalScoreFragment() {
@@ -98,7 +99,7 @@ public class Statistics extends AppCompatActivity {
         ft.commit();
     }
 
-    private void connectGameButtons() {
+    private void connectGameButtons(String gameName) {
         mVerbalGameButton = (Button) findViewById(R.id.verbalgamebutton);
         mVerbalGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,6 +143,22 @@ public class Statistics extends AppCompatActivity {
                 }
             }
         });
+
+        switch (gameName) {
+            case NumberGame.GAME_NAME:
+                setToggleButtonAnimation(mNumberGameButton);
+                break;
+            case SequenceGame.GAME_NAME:
+                setToggleButtonAnimation(mSequenceGameButton);
+                break;
+            case VisualMemoryGame.GAME_NAME:
+                setToggleButtonAnimation(mVisualGameButton);
+                break;
+            case VerbalMemoryGame.GAME_NAME:
+                setToggleButtonAnimation(mVerbalGameButton);
+                break;
+        }
+
     }
 
     private void setStatistics(String gameName) {
@@ -158,7 +175,7 @@ public class Statistics extends AppCompatActivity {
 
         Button[] butt = {mSequenceGameButton, mNumberGameButton, mVisualGameButton, mVerbalGameButton};
 
-        for (Button button :butt) {
+        for (Button button : butt) {
             if (button.equals(pressedButton)) {
                 button.getBackground().setAlpha(255);
                 button.setTextColor(Color.BLACK);

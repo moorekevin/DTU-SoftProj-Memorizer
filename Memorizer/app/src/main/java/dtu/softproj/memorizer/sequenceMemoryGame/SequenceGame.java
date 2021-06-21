@@ -20,6 +20,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import java.util.ArrayList;
 import java.util.Random;
 
+import dtu.softproj.memorizer.Blinking;
 import dtu.softproj.memorizer.R;
 
 public class SequenceGame extends AppCompatActivity implements View.OnClickListener {
@@ -108,17 +109,6 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    @SuppressLint("WrongConstant")
-    public void manageBlinkEffect(LinearLayout rLayout, String startColor, String endColor) {
-        ObjectAnimator anim = ObjectAnimator.ofInt(rLayout, "backgroundColor",
-                Color.parseColor(startColor), Color.parseColor(endColor));
-        anim.setDuration(300);
-        anim.setEvaluator(new ArgbEvaluator());
-        anim.setRepeatMode(Animation.REVERSE);
-        anim.setRepeatCount(1);
-        anim.start();
-    }
-
     @Override
     public void onClick(View view) {
         if (!isSequenceBeingDisplayed) {
@@ -130,7 +120,7 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
                     level = sequence.size();
                     levelTextView.setText("LEVEL: " + level);
                     currentNum = 0;
-                    manageBlinkEffect(rLayout, "#ff9494", "#94ff9B");
+                    Blinking.manageBlinkEffect(rLayout, "#ff9494", "#94ff9B", 500);
 //                    cLayout.setBackgroundColor(Color.parseColor("#ff9494"));
                     displaySequence();
                 }
