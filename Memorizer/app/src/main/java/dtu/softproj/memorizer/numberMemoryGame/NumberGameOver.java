@@ -24,7 +24,6 @@ import java.util.Date;
 
 import dtu.softproj.memorizer.MainActivity;
 import dtu.softproj.memorizer.R;
-import dtu.softproj.memorizer.sequenceMemoryGame.SequenceGame;
 import dtu.softproj.memorizer.statistics.Statistics;
 import dtu.softproj.memorizer.User;
 
@@ -79,11 +78,10 @@ public class NumberGameOver extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String username = mNameInput.getText().toString();
-                if (username.equals("") || username == null) {
+                if (username.equals("")) {
                     Context context = getApplicationContext();
                     Toast fillTextBox = Toast.makeText(context, "Please insert a name", Toast.LENGTH_SHORT);
                     fillTextBox.show();
-                    return;
                 } else {
                     User user = new User(username, Integer.parseInt(mYourScoreValue.getText().toString()));
 

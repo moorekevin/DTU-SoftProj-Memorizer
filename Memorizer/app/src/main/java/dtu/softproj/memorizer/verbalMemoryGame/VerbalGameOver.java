@@ -25,12 +25,7 @@ import java.util.Date;
 import dtu.softproj.memorizer.MainActivity;
 import dtu.softproj.memorizer.R;
 import dtu.softproj.memorizer.User;
-import dtu.softproj.memorizer.numberMemoryGame.NumberGame;
-import dtu.softproj.memorizer.numberMemoryGame.NumberGameOver;
-import dtu.softproj.memorizer.sequenceMemoryGame.SequenceGame;
 import dtu.softproj.memorizer.statistics.Statistics;
-import dtu.softproj.memorizer.visualMemoryGame.VisualGameOver;
-import dtu.softproj.memorizer.visualMemoryGame.VisualMemoryGame;
 
 public class VerbalGameOver extends AppCompatActivity {
     private Button mPlayAgain;
@@ -41,7 +36,7 @@ public class VerbalGameOver extends AppCompatActivity {
     private Button mSubmitScore;
     private int score;
 
-    private String currentGame = VerbalMemoryGame.GAME_NAME;
+    private String currentGame = VerbalGame.GAME_NAME;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,7 +47,7 @@ public class VerbalGameOver extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent playAgainIntent = new Intent(VerbalGameOver.this, VerbalMemoryGame.class);
+                Intent playAgainIntent = new Intent(VerbalGameOver.this, VerbalGame.class);
                 startActivity(playAgainIntent);
             }
         });
@@ -79,11 +74,10 @@ public class VerbalGameOver extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String username = mNameInput.getText().toString();
-                if (username.equals("") || username == null) {
+                if (username.equals("")) {
                     Context context = getApplicationContext();
                     Toast fillTextBox = Toast.makeText(context, "Please insert a name", Toast.LENGTH_SHORT);
                     fillTextBox.show();
-                    return;
                 } else {
                     User user = new User(username, Integer.parseInt(mYourScoreValue.getText().toString()));
 

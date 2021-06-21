@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import dtu.softproj.memorizer.R;
 
-public class NumberFragment1 extends Fragment {
+public class DisplayNumberFragment extends Fragment {
 
     private ProgressBar mProgressBar;
     private CountDownTimer mCountDownTimer;
@@ -23,7 +23,7 @@ public class NumberFragment1 extends Fragment {
     private String numberString;
 
 
-    public NumberFragment1() {
+    public DisplayNumberFragment() {
         // Required empty public constructor
     }
 
@@ -31,7 +31,7 @@ public class NumberFragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_number1, container, false);
+        return inflater.inflate(R.layout.display_number_fragment, container, false);
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -68,7 +68,7 @@ public class NumberFragment1 extends Fragment {
     public void startNumberFragment2() {
         mProgressBar.setProgress(100);
 
-        NumberFragment2 fragment = new NumberFragment2();
+        SubmitNumberFragment fragment = new SubmitNumberFragment();
         Bundle args = new Bundle();
         args.putString("numberString", numberString);
         fragment.setArguments(args);

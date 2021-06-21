@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import dtu.softproj.memorizer.R;
 
-public class VisualMemoryGame extends AppCompatActivity {
+public class VisualGame extends AppCompatActivity {
     public static final String GAME_NAME = "Visual Memory";
     private final int DISPLAY_TIME = 1500;
     private final int END_DELAY = 1000;
@@ -191,7 +191,7 @@ public class VisualMemoryGame extends AppCompatActivity {
                         newRound();
                     } else {
                         finish();
-                        Intent intent = new Intent(VisualMemoryGame.this, VisualGameOver.class);
+                        Intent intent = new Intent(VisualGame.this, VisualGameOver.class);
                         intent.putExtra("score", level - 1);
                         startActivity(intent);
                     }

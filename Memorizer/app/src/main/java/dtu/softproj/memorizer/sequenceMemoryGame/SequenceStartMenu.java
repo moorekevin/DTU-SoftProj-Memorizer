@@ -1,4 +1,4 @@
-package dtu.softproj.memorizer.visualMemoryGame;
+package dtu.softproj.memorizer.sequenceMemoryGame;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,9 +20,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import dtu.softproj.memorizer.R;
 import dtu.softproj.memorizer.User;
-import dtu.softproj.memorizer.sequenceMemoryGame.SequenceGame;
 
-public class VisualMemoryActivity extends AppCompatActivity {
+public class SequenceStartMenu extends AppCompatActivity {
     private Button mPlayButton;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -34,33 +32,32 @@ public class VisualMemoryActivity extends AppCompatActivity {
 
         // Setting the background color
         LinearLayout layout = (LinearLayout) findViewById(R.id.playLayout);
-        layout.setBackgroundColor(Color.parseColor("#88e3ff"));
+        layout.setBackgroundColor(Color.parseColor("#ff9494"));
         // Setting the logo
         ImageView img = (ImageView) findViewById(R.id.imageView);
-        img.setImageResource(R.drawable.visualmemory_logo);
+        img.setImageResource(R.drawable.sequence_logo);
         // Setting the game name
         TextView gameName = (TextView) findViewById(R.id.gameName);
-        gameName.setText("Visual Memory");
+        gameName.setText("Sequence Memory");
         // Setting the game description
         TextView gameDescription = (TextView) findViewById(R.id.gameDescription);
-        gameDescription.setText("Remember the increasingly number of \n" +
-                "marked squares on the grid");
+        gameDescription.setText("Remember an increasingly long pattern \n" +
+                "of button presses");
 
         mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent playIntent = new Intent(VisualMemoryActivity.this, VisualMemoryGame.class);
+                Intent playIntent = new Intent(SequenceStartMenu.this, SequenceGame.class);
                 startActivity(playIntent);
             }
         });
-
         getAllTimeHighScore();
     }
 
     private void getAllTimeHighScore() {
         TextView allTimeScore = (TextView) findViewById(R.id.gameHighScoreValue);
         DatabaseReference mUserDatabase = FirebaseDatabase.getInstance("https://dtu-memorizer-default-rtdb.europe-west1.firebasedatabase.app/")
-                .getReference("users/" + VisualMemoryGame.GAME_NAME);
+                .getReference("users/" + SequenceGame.GAME_NAME);
         // Finding the player with the highest score in game
         Query mDatabaseHighestPlayer = mUserDatabase.orderByChild("score").limitToLast(1);
         mDatabaseHighestPlayer.addValueEventListener(new ValueEventListener() {
@@ -80,5 +77,4 @@ public class VisualMemoryActivity extends AppCompatActivity {
             }
         });
     }
-
 }

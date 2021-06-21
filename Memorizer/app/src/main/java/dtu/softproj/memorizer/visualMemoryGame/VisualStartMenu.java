@@ -1,16 +1,15 @@
-package dtu.softproj.memorizer.numberMemoryGame;
+package dtu.softproj.memorizer.visualMemoryGame;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.Button;
 import android.view.View;
-import android.content.Intent;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,11 +20,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import dtu.softproj.memorizer.R;
 import dtu.softproj.memorizer.User;
-import dtu.softproj.memorizer.sequenceMemoryGame.SequenceGame;
 
-
-public class NumberMemoryActivity extends AppCompatActivity {
- private Button mPlayButton;
+public class VisualStartMenu extends AppCompatActivity {
+    private Button mPlayButton;
 
     public void onCreate(Bundle savedInstanceState) {
 
@@ -34,23 +31,23 @@ public class NumberMemoryActivity extends AppCompatActivity {
         mPlayButton = findViewById(R.id.playbutton);
 
         // Setting the background color
-        LinearLayout layout = (LinearLayout ) findViewById(R.id.playLayout);
-        layout.setBackgroundColor(Color.parseColor("#88ff98"));
+        LinearLayout layout = (LinearLayout) findViewById(R.id.playLayout);
+        layout.setBackgroundColor(Color.parseColor("#88e3ff"));
         // Setting the logo
         ImageView img = (ImageView) findViewById(R.id.imageView);
-        img.setImageResource(R.drawable.numbermemory_logo);
+        img.setImageResource(R.drawable.visualmemory_logo);
         // Setting the game name
         TextView gameName = (TextView) findViewById(R.id.gameName);
-        gameName.setText(NumberGame.GAME_NAME);
+        gameName.setText("Visual Memory");
         // Setting the game description
         TextView gameDescription = (TextView) findViewById(R.id.gameDescription);
-        gameDescription.setText("Memorize the longest sequence of numbers. \n " +
-                "The average person can remember \n 7 numbers at once");
+        gameDescription.setText("Remember the increasingly number of \n" +
+                "marked squares on the grid");
 
         mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent playIntent = new Intent(NumberMemoryActivity.this, NumberGame.class);
+                Intent playIntent = new Intent(VisualStartMenu.this, VisualGame.class);
                 startActivity(playIntent);
             }
         });
@@ -61,7 +58,7 @@ public class NumberMemoryActivity extends AppCompatActivity {
     private void getAllTimeHighScore() {
         TextView allTimeScore = (TextView) findViewById(R.id.gameHighScoreValue);
         DatabaseReference mUserDatabase = FirebaseDatabase.getInstance("https://dtu-memorizer-default-rtdb.europe-west1.firebasedatabase.app/")
-                .getReference("users/" + NumberGame.GAME_NAME);
+                .getReference("users/" + VisualGame.GAME_NAME);
         // Finding the player with the highest score in game
         Query mDatabaseHighestPlayer = mUserDatabase.orderByChild("score").limitToLast(1);
         mDatabaseHighestPlayer.addValueEventListener(new ValueEventListener() {
@@ -81,4 +78,5 @@ public class NumberMemoryActivity extends AppCompatActivity {
             }
         });
     }
+
 }

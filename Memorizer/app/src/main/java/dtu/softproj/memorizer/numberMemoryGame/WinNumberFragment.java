@@ -11,13 +11,13 @@ import android.widget.TextView;
 
 import dtu.softproj.memorizer.R;
 
-public class NumberFragment3 extends Fragment {
+public class WinNumberFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_number3, container, false);
+        return inflater.inflate(R.layout.win_number_fragment, container, false);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class NumberFragment3 extends Fragment {
             public void onClick(View v) {
                 getFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.flFragment, new NumberFragment1())
+                        .replace(R.id.flFragment, new DisplayNumberFragment())
                         .commit();
             }
         });

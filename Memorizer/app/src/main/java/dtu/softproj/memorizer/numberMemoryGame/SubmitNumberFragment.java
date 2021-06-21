@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +14,7 @@ import android.widget.Toast;
 
 import dtu.softproj.memorizer.R;
 
-public class NumberFragment2 extends Fragment {
+public class SubmitNumberFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -43,7 +42,7 @@ public class NumberFragment2 extends Fragment {
                 if (input.equals(numberString)) {
                     getFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.flFragment, new NumberFragment3())
+                            .replace(R.id.flFragment, new WinNumberFragment())
                             .commit();
 
                 } else {
@@ -59,6 +58,6 @@ public class NumberFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_number2, container, false);
+        return inflater.inflate(R.layout.submit_number_fragment, container, false);
     }
 }

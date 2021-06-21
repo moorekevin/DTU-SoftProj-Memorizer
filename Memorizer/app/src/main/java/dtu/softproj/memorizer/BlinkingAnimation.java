@@ -7,7 +7,7 @@ import android.graphics.Color;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 
-public class Blinking {
+public class BlinkingAnimation {
 
     @SuppressLint("WrongConstant")
     public static void manageBlinkEffect(ViewGroup cLayout, String startColor, String endColor, int duration) {

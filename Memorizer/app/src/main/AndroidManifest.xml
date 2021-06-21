@@ -24,7 +24,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".numberMemoryGame.NumberMemoryActivity"
+            android:name=".numberMemoryGame.NumberStartMenu"
             android:screenOrientation="portrait" />
         <activity
             android:name=".numberMemoryGame.NumberGameOver"
@@ -35,7 +35,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".sequenceMemoryGame.SequenceActivity"
+            android:name=".sequenceMemoryGame.SequenceStartMenu"
             android:screenOrientation="portrait" />
         <activity
             android:name=".sequenceMemoryGame.SequenceGameOver"
@@ -46,25 +46,25 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".visualMemoryGame.VisualMemoryActivity"
+            android:name=".visualMemoryGame.VisualStartMenu"
             android:screenOrientation="portrait" />
         <activity
             android:name=".visualMemoryGame.VisualGameOver"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".visualMemoryGame.VisualMemoryGame"
+            android:name=".visualMemoryGame.VisualGame"
             android:screenOrientation="portrait" />
         <activity
 
-            android:name=".verbalMemoryGame.VerbalMemoryActivity"
+            android:name=".verbalMemoryGame.VerbalStartMenu"
             android:screenOrientation="portrait" />
         <activity
             android:name=".verbalMemoryGame.VerbalGameOver"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".verbalMemoryGame.VerbalMemoryGame"
+            android:name=".verbalMemoryGame.VerbalGame"
             android:screenOrientation="portrait" />
 
 

@@ -1,15 +1,8 @@
 package dtu.softproj.memorizer.verbalMemoryGame;
 
-import android.animation.ArgbEvaluator;
-import android.animation.ObjectAnimator;
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,12 +13,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-import dtu.softproj.memorizer.Blinking;
+import dtu.softproj.memorizer.BlinkingAnimation;
 import dtu.softproj.memorizer.R;
 
-public class VerbalMemoryGame extends AppCompatActivity {
+public class VerbalGame extends AppCompatActivity {
     public static final String GAME_NAME = "Verbal Memory";
     private final double PROBABILITY_CONSTANT = 0.262;
     private final double PROBABILITY_COEFFICIENT = 0.638;
@@ -61,16 +53,12 @@ public class VerbalMemoryGame extends AppCompatActivity {
     public void newRound() {
         tvLives.setText("Lives: " + lives);
         tvScore.setText("Score: " + level);
-        if (level < 2) {
-            probabilityOfNewWord = 1;
-        } else {
-            probabilityOfNewWord = probabilityOfNewWord();
-        }
+
         double number = Math.random();
-        if (number < probabilityOfNewWord) {
+        if (level < 2 || number < probabilityOfNewWord()) {
             if (dictionary.isEmpty()) {
                 finish();
-                Intent intent = new Intent(VerbalMemoryGame.this, VerbalMemoryActivity.class);
+                Intent intent = new Intent(VerbalGame.this, VerbalStartMenu.class);
                 startActivity(intent);
                 System.out.println("No more words in our dictionary. You Win!");
             } else {
@@ -94,13 +82,13 @@ public class VerbalMemoryGame extends AppCompatActivity {
             level++;
             newRound();
         } else {
-            Blinking.manageBlinkEffect(rLayout, "#e088ff", "#ff6d6d", 300);
+            BlinkingAnimation.manageBlinkEffect(rLayout, "#e088ff", "#ff6d6d", 300);
             lives--;
             if (lives > 0) {
                 newRound();
             } else {
                 finish();
-                Intent intent = new Intent(VerbalMemoryGame.this, VerbalGameOver.class);
+                Intent intent = new Intent(VerbalGame.this, VerbalGameOver.class);
                 intent.putExtra("score", level);
                 startActivity(intent);
             }

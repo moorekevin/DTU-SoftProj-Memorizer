@@ -8,9 +8,6 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.Random;
 
 import dtu.softproj.memorizer.R;
@@ -27,7 +24,7 @@ public class NumberGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.number_layout);
 
-        Fragment mFragment = new NumberFragment1();
+        Fragment mFragment = new DisplayNumberFragment();
 
         FragmentManager fragmentManager = getFragmentManager();
 

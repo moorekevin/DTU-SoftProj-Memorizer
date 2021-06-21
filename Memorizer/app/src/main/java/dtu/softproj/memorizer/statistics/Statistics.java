@@ -17,8 +17,8 @@ import android.app.FragmentTransaction;
 import dtu.softproj.memorizer.R;
 import dtu.softproj.memorizer.numberMemoryGame.NumberGame;
 import dtu.softproj.memorizer.sequenceMemoryGame.SequenceGame;
-import dtu.softproj.memorizer.verbalMemoryGame.VerbalMemoryGame;
-import dtu.softproj.memorizer.visualMemoryGame.VisualMemoryGame;
+import dtu.softproj.memorizer.verbalMemoryGame.VerbalGame;
+import dtu.softproj.memorizer.visualMemoryGame.VisualGame;
 
 public class Statistics extends AppCompatActivity {
     private TextView mGameName;
@@ -104,9 +104,9 @@ public class Statistics extends AppCompatActivity {
         mVerbalGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!game.equals(VerbalMemoryGame.GAME_NAME)) {
+                if (!game.equals(VerbalGame.GAME_NAME)) {
                     setToggleButtonAnimation(mVerbalGameButton);
-                    setStatistics(VerbalMemoryGame.GAME_NAME);
+                    setStatistics(VerbalGame.GAME_NAME);
                 }
             }
         });
@@ -137,9 +137,9 @@ public class Statistics extends AppCompatActivity {
         mVisualGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!game.equals(VisualMemoryGame.GAME_NAME)) {
+                if (!game.equals(VisualGame.GAME_NAME)) {
                     setToggleButtonAnimation(mVisualGameButton);
-                    setStatistics(VisualMemoryGame.GAME_NAME);
+                    setStatistics(VisualGame.GAME_NAME);
                 }
             }
         });
@@ -151,10 +151,10 @@ public class Statistics extends AppCompatActivity {
             case SequenceGame.GAME_NAME:
                 setToggleButtonAnimation(mSequenceGameButton);
                 break;
-            case VisualMemoryGame.GAME_NAME:
+            case VisualGame.GAME_NAME:
                 setToggleButtonAnimation(mVisualGameButton);
                 break;
-            case VerbalMemoryGame.GAME_NAME:
+            case VerbalGame.GAME_NAME:
                 setToggleButtonAnimation(mVerbalGameButton);
                 break;
         }

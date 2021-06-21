@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,9 +20,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import dtu.softproj.memorizer.R;
 import dtu.softproj.memorizer.User;
-import dtu.softproj.memorizer.sequenceMemoryGame.SequenceGame;
 
-public class VerbalMemoryActivity extends AppCompatActivity {
+public class VerbalStartMenu extends AppCompatActivity {
     private Button mPlayButton;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -48,7 +46,7 @@ public class VerbalMemoryActivity extends AppCompatActivity {
         mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent playIntent = new Intent(VerbalMemoryActivity.this, VerbalMemoryGame.class);
+                Intent playIntent = new Intent(VerbalStartMenu.this, VerbalGame.class);
                 startActivity(playIntent);
             }
         });
@@ -59,7 +57,7 @@ public class VerbalMemoryActivity extends AppCompatActivity {
     private void getAllTimeHighScore() {
         TextView allTimeScore = (TextView) findViewById(R.id.gameHighScoreValue);
         DatabaseReference mUserDatabase = FirebaseDatabase.getInstance("https://dtu-memorizer-default-rtdb.europe-west1.firebasedatabase.app/")
-                .getReference("users/" + VerbalMemoryGame.GAME_NAME);
+                .getReference("users/" + VerbalGame.GAME_NAME);
         // Finding the player with the highest score in game
         Query mDatabaseHighestPlayer = mUserDatabase.orderByChild("score").limitToLast(1);
         mDatabaseHighestPlayer.addValueEventListener(new ValueEventListener() {

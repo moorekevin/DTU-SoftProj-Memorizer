@@ -1,26 +1,20 @@
 package dtu.softproj.memorizer.sequenceMemoryGame;
 
-import android.animation.ArgbEvaluator;
-import android.animation.ObjectAnimator;
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import dtu.softproj.memorizer.Blinking;
+import dtu.softproj.memorizer.BlinkingAnimation;
 import dtu.softproj.memorizer.R;
 
 public class SequenceGame extends AppCompatActivity implements View.OnClickListener {
@@ -120,7 +114,7 @@ public class SequenceGame extends AppCompatActivity implements View.OnClickListe
                     level = sequence.size();
                     levelTextView.setText("LEVEL: " + level);
                     currentNum = 0;
-                    Blinking.manageBlinkEffect(rLayout, "#ff9494", "#94ff9B", 500);
+                    BlinkingAnimation.manageBlinkEffect(rLayout, "#ff9494", "#94ff9B", 500);
 //                    cLayout.setBackgroundColor(Color.parseColor("#ff9494"));
                     displaySequence();
                 }

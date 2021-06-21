@@ -25,8 +25,6 @@ import java.util.Date;
 import dtu.softproj.memorizer.MainActivity;
 import dtu.softproj.memorizer.R;
 import dtu.softproj.memorizer.User;
-import dtu.softproj.memorizer.numberMemoryGame.NumberGame;
-import dtu.softproj.memorizer.numberMemoryGame.NumberGameOver;
 import dtu.softproj.memorizer.statistics.Statistics;
 
 public class VisualGameOver extends AppCompatActivity {
@@ -35,7 +33,7 @@ public class VisualGameOver extends AppCompatActivity {
     private ImageButton homeButton;
     private Button mSubmitScore;
     private EditText mNameInput;
-    private String currentGame = VisualMemoryGame.GAME_NAME;
+    private String currentGame = VisualGame.GAME_NAME;
     private int score;
     private TextView mYourScoreValue;
 
@@ -48,7 +46,7 @@ public class VisualGameOver extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent playAgainIntent = new Intent(VisualGameOver.this, VisualMemoryGame.class);
+                Intent playAgainIntent = new Intent(VisualGameOver.this, VisualGame.class);
                 startActivity(playAgainIntent);
             }
         });
@@ -75,11 +73,10 @@ public class VisualGameOver extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String username = mNameInput.getText().toString();
-                if (username.equals("") || username == null) {
+                if (username.equals("")) {
                     Context context = getApplicationContext();
                     Toast fillTextBox = Toast.makeText(context, "Please insert a name", Toast.LENGTH_SHORT);
                     fillTextBox.show();
-                    return;
                 } else {
                     User user = new User(username, Integer.parseInt(mYourScoreValue.getText().toString()));
 

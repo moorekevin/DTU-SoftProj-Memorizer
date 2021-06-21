@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#88FF98"
-    tools:context=".numberMemoryGame.NumberFragment2">
+    tools:context=".numberMemoryGame.SubmitNumberFragment">
 
     <TextView
         android:id="@+id/what_number"
