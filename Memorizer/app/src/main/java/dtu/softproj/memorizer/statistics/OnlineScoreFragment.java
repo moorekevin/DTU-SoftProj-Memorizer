@@ -53,12 +53,11 @@ public class OnlineScoreFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot){
                 if (hasNotGottenData) {
                     hasNotGottenData = false;
-                    int index = 2;
                     for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                         if (childSnapshot.exists()) {
                             User user = childSnapshot.getValue(User.class);
                             user.setName(childSnapshot.getKey());
-                            createRows(user.getName(), user.getScore(), index);
+                            createRows(user.getName(), user.getScore(), 2);
                         }
                     }
                 }
